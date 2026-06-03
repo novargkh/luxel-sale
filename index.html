@@ -16,9 +16,23 @@
   --sh-red:0 8px 32px rgba(232,25,44,.18);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-serif;font-size:var(--text-md);min-height:100vh;}
+body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;font-size:var(--text-md);min-height:100vh;}
+/* KALEIDOSCOPE SUMMER BACKGROUND */
+.kb-wrap{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.kb{position:absolute;border-radius:50%;filter:blur(90px);animation:kbDrift ease-in-out infinite alternate;}
+.kb1{width:560px;height:560px;top:-120px;left:-80px;   background:rgba(255,195,50,.16); animation-duration:14s;animation-delay:0s;}
+.kb2{width:420px;height:480px;top:15%;  right:-60px;   background:rgba(50,185,110,.13); animation-duration:18s;animation-delay:-5s;}
+.kb3{width:500px;height:300px;bottom:5%;left:15%;       background:rgba(255,110,70,.10); animation-duration:20s;animation-delay:-8s;}
+.kb4{width:380px;height:420px;bottom:-80px;right:8%;   background:rgba(80,160,255,.10); animation-duration:11s;animation-delay:-3s;}
+.kb5{width:300px;height:340px;top:40%;  left:38%;      background:rgba(230,50,80,.07);  animation-duration:16s;animation-delay:-10s;}
+@keyframes kbDrift{
+  0%  {transform:translate(0,0) scale(1);}
+  33% {transform:translate(25px,-20px) scale(1.06);}
+  66% {transform:translate(-15px,30px) scale(.96);}
+  100%{transform:translate(20px,10px) scale(1.04);}
+}
 /* HEADER */
-.header{background:var(--white);border-bottom:3px solid var(--red);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--sh-sm);}
+.header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:3px solid var(--red);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--sh-sm);}
 .header-logo img{height:40px;display:block;}
 .header-center{text-align:center;}
 .header-center h1{font-size:18px;font-weight:800;color:var(--dark);}
@@ -27,13 +41,13 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 .header-counter .count{font-size:38px;font-weight:900;color:var(--red);line-height:1;}
 .header-counter .label{font-size:var(--text-sm);color:var(--muted);font-weight:500;}
 /* HERO */
-.hero{background:linear-gradient(160deg,var(--white) 0%,#fff5f5 60%,#fff8f0 100%);padding:48px 24px 40px;text-align:center;border-bottom:1px solid var(--border);}
+.hero{background:linear-gradient(160deg,rgba(255,249,240,.92) 0%,rgba(255,245,245,.88) 40%,rgba(240,250,245,.90) 80%,rgba(245,255,248,.92) 100%);backdrop-filter:blur(2px);padding:48px 24px 40px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;z-index:2;}
 .hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-size:var(--text-sm);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:30px;margin-bottom:20px;}
 .hero h2{font-size:36px;font-weight:900;line-height:1.15;margin-bottom:10px;}
 .hero h2 em{color:var(--red);font-style:normal;}
 .hero p{font-size:var(--text-lg);color:var(--muted);font-weight:500;}
 /* COUNTDOWN */
-.countdown-wrap{padding:36px 24px 24px;text-align:center;}
+.countdown-wrap{padding:36px 24px 24px;text-align:center;position:relative;z-index:2;}
 .cd-title{font-size:var(--text-sm);font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
 .cd-title.urgent{color:var(--red);}
 .cd-digits{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 32px;box-shadow:var(--sh-md);}
@@ -45,7 +59,7 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 .cd-next{font-size:var(--text-md);color:var(--muted);margin-top:16px;}
 .cd-next strong{color:var(--dark);font-weight:700;}
 /* GRID */
-.grid-section{padding:8px 24px 64px;max-width:1140px;margin:0 auto;}
+.grid-section{padding:8px 24px 64px;max-width:1140px;margin:0 auto;position:relative;z-index:2;}
 .grid-title{text-align:center;font-size:var(--text-sm);font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:24px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:16px;}
 /* CARDS */
@@ -55,6 +69,8 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 .box-card.available:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 12px 40px rgba(232,25,44,.28);animation:none;}
 .box-card.opened{background:var(--green-soft);border:1.5px solid #b8dfc8;box-shadow:var(--sh-sm);}
 .box-card.expired{background:#f5f5f8;border:1.5px dashed #ccc;box-shadow:none;opacity:.7;}
+.box-card.future{background:linear-gradient(145deg,#f0f7ff 0%,#eef5fb 100%);border:1.5px solid #c8ddf0;box-shadow:var(--sh-sm);}
+.box-card.coming{background:var(--white);border:1.5px solid var(--border);box-shadow:var(--sh-sm);}
 @keyframes floatCard{0%,100%{transform:translateY(0);box-shadow:var(--sh-red);}50%{transform:translateY(-4px);box-shadow:0 12px 36px rgba(232,25,44,.25);}}
 .card-shimmer{position:absolute;inset:0;border-radius:var(--r-md);background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);background-size:220% 100%;animation:shimmer 2.5s linear infinite;pointer-events:none;}
 @keyframes shimmer{0%{background-position:220% 0}100%{background-position:-220% 0}}
@@ -71,9 +87,10 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 .card-opened{text-align:center;width:100%;}
 .card-opened-disc{font-size:32px;font-weight:900;color:var(--green);line-height:1;}
 .card-opened-name{font-size:13px;color:var(--dark);margin-top:5px;font-weight:600;line-height:1.35;}
-.card-locked-label,.card-expired-label{font-size:var(--text-sm);font-weight:600;}
+.card-locked-label,.card-expired-label,.card-future-label{font-size:var(--text-sm);font-weight:600;}
 .card-locked-label{color:var(--muted);}
 .card-expired-label{color:#aaa;}
+.card-future-label{color:#5b88b5;font-weight:700;letter-spacing:.3px;}
 /* POPUP OVERLAY */
 .overlay{display:none;position:fixed;inset:0;background:rgba(20,15,30,.65);backdrop-filter:blur(8px);z-index:1000;align-items:center;justify-content:center;padding:20px;}
 .overlay.active{display:flex;}
@@ -89,3 +106,447 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 @keyframes discIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
 /* POPUP BODY */
 .popup-body{padding:24px 32px 28px;display:flex;flex-direction:column;gap:14px;}
+
+/* SUMMER DECORATIONS */
+.sun-deco{position:absolute;top:-40px;right:-40px;width:180px;height:180px;pointer-events:none;z-index:0;opacity:.13;animation:sunSpin 40s linear infinite,sunPulse 6s ease-in-out infinite;}
+@keyframes sunSpin{to{transform:rotate(360deg);}}
+@keyframes sunPulse{0%,100%{opacity:.13;}50%{opacity:.18;}}
+.hero>*:not(.sun-deco){position:relative;z-index:1;}
+.leaves-wrap{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
+.leaf{position:absolute;bottom:-40px;opacity:0;animation:leafRise linear infinite;}
+@keyframes leafRise{
+  0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:0;}
+  8%{opacity:.55;}
+  85%{opacity:.4;}
+  100%{transform:translateY(-105vh) rotate(900deg) translateX(var(--lx));opacity:0;}
+}
+.grass-deco{position:fixed;bottom:0;left:0;right:0;pointer-events:none;z-index:1;opacity:.07;}
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas" style="position:fixed;inset:0;pointer-events:none;z-index:999;display:none;"></canvas>
+
+<div class="kb-wrap" aria-hidden="true">
+  <div class="kb kb1"></div>
+  <div class="kb kb2"></div>
+  <div class="kb kb3"></div>
+  <div class="kb kb4"></div>
+  <div class="kb kb5"></div>
+</div>
+
+<div class="leaves-wrap" id="leavesWrap"></div>
+
+<svg class="grass-deco" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <path d="M0,80 L0,55 Q20,30 40,55 Q60,75 80,48 Q100,25 120,50 Q140,72 160,44 Q180,20 200,46 Q220,68 240,40 Q260,18 280,44 Q300,65 320,38 Q340,16 360,42 Q380,64 400,36 Q420,14 440,40 Q460,62 480,35 Q500,12 520,38 Q540,60 560,34 Q580,12 600,38 Q620,60 640,34 Q660,10 680,36 Q700,58 720,32 Q740,10 760,36 Q780,58 800,33 Q820,10 840,36 Q860,58 880,34 Q900,12 920,38 Q940,60 960,36 Q980,14 1000,40 Q1020,62 1040,38 Q1060,16 1080,42 Q1100,64 1120,40 Q1140,18 1160,44 Q1180,66 1200,42 Q1220,20 1240,46 Q1260,68 1280,44 Q1300,22 1320,48 Q1340,70 1360,46 Q1380,24 1400,50 Q1420,72 1440,50 L1440,80 Z" fill="#1a7a35"/>
+</svg>
+
+<header class="header">
+  <div class="header-logo"><img src="https://luxel.ua/image/catalog/logo/logo.webp" alt="Luxel"></div>
+  <div class="header-center">
+    <h1>🎁 Калейдоскоп знижок</h1>
+    <p>Червень 2026 · Кожен робочий день — нова коробка</p>
+  </div>
+  <div class="header-counter">
+    <div class="count" id="boxesLeftNum">—</div>
+    <div class="label">коробок залишилось</div>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="sun-deco" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="90" cy="90" r="44" fill="#f0a500"/>
+    <g stroke="#f0a500" stroke-width="6" stroke-linecap="round">
+      <line x1="90" y1="12" x2="90" y2="30"/><line x1="90" y1="150" x2="90" y2="168"/>
+      <line x1="12" y1="90" x2="30" y2="90"/><line x1="150" y1="90" x2="168" y2="90"/>
+      <line x1="33" y1="33" x2="46" y2="46"/><line x1="134" y1="134" x2="147" y2="147"/>
+      <line x1="147" y1="33" x2="134" y2="46"/><line x1="46" y1="134" x2="33" y2="147"/>
+    </g>
+  </svg>
+  <div class="hero-tag">⚡ Тільки для дистриб'юторів Luxel</div>
+  <h2>Відкривай <em>нову знижку</em><br>кожного ранку</h2>
+  <p>Щодня з 9:00 до 12:00 — нова коробка з ексклюзивною акцією</p>
+</section>
+
+<div class="countdown-wrap">
+  <div class="cd-title" id="cdTitle">До наступної коробки</div>
+  <div class="cd-digits">
+    <div class="cd-block"><div class="val" id="cdH">--</div><div class="unit">годин</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="val" id="cdM">--</div><div class="unit">хвилин</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-block"><div class="val" id="cdS">--</div><div class="unit">секунд</div></div>
+  </div>
+  <div class="cd-next" id="cdNext"></div>
+</div>
+
+<section class="grid-section">
+  <div class="grid-title">— Усі коробки червня —</div>
+  <div class="grid" id="boxGrid"></div>
+</section>
+
+<div class="overlay" id="overlay">
+  <div class="popup">
+    <div class="popup-top">
+      <div class="popup-gift">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="46" width="80" height="50" rx="5" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
+          <rect x="46" y="46" width="8" height="50" fill="rgba(255,255,255,.4)"/>
+          <rect x="10" y="61" width="80" height="8" fill="rgba(255,255,255,.4)"/>
+          <rect x="6" y="31" width="88" height="20" rx="4" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
+          <rect x="46" y="31" width="8" height="20" fill="rgba(255,255,255,.4)"/>
+          <ellipse cx="37" cy="31" rx="14" ry="9" fill="rgba(255,255,255,.3)" transform="rotate(-20,37,31)"/>
+          <ellipse cx="63" cy="31" rx="14" ry="9" fill="rgba(255,255,255,.3)" transform="rotate(20,63,31)"/>
+          <circle cx="50" cy="31" r="7" fill="rgba(255,255,255,.6)"/>
+          <circle cx="50" cy="31" r="3" fill="rgba(232,25,44,.8)"/>
+        </svg>
+      </div>
+      <div class="popup-discount" id="popupDiscount">-15%</div>
+    </div>
+    <div class="popup-body">
+      <div class="popup-product">
+        <div class="popup-product-name" id="popupProduct">Товар дня</div>
+        <div class="popup-product-skus" id="popupSkus"></div>
+      </div>
+      <div class="popup-promo" id="promoBlock">
+        <div class="popup-promo-label">Промокод — вкажи у коментарі до замовлення</div>
+        <div class="popup-promo-code" id="popupPromo" onclick="copyPromo()">XXXX</div>
+        <div class="popup-promo-hint">Натисни щоб скопіювати</div>
+        <div class="popup-promo-copied" id="promoCopied"></div>
+        <div class="popup-promo-expired" id="promoExpired">⏱ Час для замовлення вийшов</div>
+      </div>
+      <div class="popup-timer" id="popupTimerRow">
+        <span class="popup-timer-label">⏱ До кінця акції (12:00)</span>
+        <span class="popup-timer-val" id="popupCountdown">60:00</span>
+      </div>
+      <div class="popup-next" id="popupNext"></div>
+      <a class="popup-order" href="https://luxel.ua/optorder" target="_blank">🛒 Оформити замовлення</a>
+      <button class="popup-close" onclick="closeOverlay()">Закрити</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Знижки діють з 9:00 до 12:00 · Оформити замовлення можна впродовж 60 хвилин після відкриття
+</footer>
+
+<script>
+const BOX_OPEN_HOUR  = 9;
+const BOX_CLOSE_HOUR = 12;
+const PROMO_MIN      = 60;
+
+const SCHEDULE = [
+  {date:"2026-06-03",day:"Ср",group:"Лампи А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",              discount:15,promo:"A60X"},
+  {date:"2026-06-04",day:"Чт",group:"OPERA білий",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся біла серія",        discount:15,promo:"OPRA"},
+  {date:"2026-06-05",day:"Пт",group:"JAZZ білий",            skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",                  discount:15,promo:"JAZZ"},
+  {date:"2026-06-09",day:"Пн",group:"Лампи C37 / C35",       skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                       discount:15,promo:"C37K"},
+  {date:"2026-06-10",day:"Вт",group:"OPERA чорний",          skus:"2101 · 2102 · 2104 · 2107 · 2108",                         discount:20,promo:"OPBK"},
+  {date:"2026-06-11",day:"Ср",group:"Лампи G45",             skus:"053-NE · 056-NE · 057-NE · 058-NE",                        discount:20,promo:"G45L"},
+  {date:"2026-06-12",day:"Чт",group:"JAZZ графіт + чорний",  skus:"9101Р · 9102Р · 9107Р · 9701Р · 9702Р — усі",             discount:15,promo:"JZGR"},
+  {date:"2026-06-13",day:"Пт",group:"BSR / BSO",             skus:"BSR-12N/C · BSR-20N/C · BSO-12N/C · BSO-20N/C · BSRS",    discount:20,promo:"BSRX"},
+  {date:"2026-06-16",day:"Пн",group:"Лампи T8",              skus:"T8-0.6-10w · T8-1.2-18w · усі моделі без порогу",         discount:12,promo:"T8XX"},
+  {date:"2026-06-17",day:"Вт",group:"PRIMERA білий",         skus:"3001 · 3002 · 3003 · 3004 · 3007 · 3008 + серія",          discount:10,promo:"PR1M"},
+  {date:"2026-06-18",day:"Ср",group:"Лампи MR16",            skus:"010-NE · 012-NE · 014-NE · усі GU5.3",                     discount:15,promo:"MR16"},
+  {date:"2026-06-19",day:"Чт",group:"LX3012 лінійні",        skus:"LX3012-0.6-18 · LX3012-1.2-36 · LX3012-1.5-45",           discount:10,promo:"LX30"},
+  {date:"2026-06-20",day:"Пт",group:"OPERA кольорові",       skus:"Сосна · Вишня · Крем — вся палітра",                       discount:20,promo:"OPRC"},
+  {date:"2026-06-23",day:"Пн",group:"Лампи А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",     discount:20,promo:"A6X2"},
+  {date:"2026-06-24",day:"Вт",group:"JAZZ кольорові",        skus:"Теракота · Бронза · Крем — вся палітра",                   discount:20,promo:"JZCL"},
+  {date:"2026-06-25",day:"Ср",group:"Лампи C37",             skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                       discount:20,promo:"C37X"},
+  {date:"2026-06-26",day:"Чт",group:"Двійники / перехідники",skus:"1016 · 1036 · 1024 · аналоги",                             discount:20,promo:"DV2K"},
+  {date:"2026-06-27",day:"Пт",group:"OPERA білий",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся біла серія",        discount:20,promo:"OP27"},
+  {date:"2026-06-30",day:"Пн",group:"BSR / BSO",             skus:"Усі моделі BSR · BSO · BSRS",                              discount:20,promo:"BSRZ"},
+];
+
+const todayStr = () => new Date().toISOString().slice(0,10);
+const pad = n => String(n).padStart(2,'0');
+const dl  = d => d.slice(8)+'.'+d.slice(5,7);
+function nowHour() { return new Date().getHours() + new Date().getMinutes()/60; }
+
+function getState(item) {
+  const t = todayStr();
+  if (item.date < t) return 'opened';
+  if (item.date > t) return 'locked';
+  const h = nowHour();
+  if (h < BOX_OPEN_HOUR)  return 'coming';
+  if (h < BOX_CLOSE_HOUR) return 'available';
+  return 'expired';
+}
+
+function svgLocked(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="14" y="48" width="72" height="44" rx="6" fill="#f0f2f7" stroke="#dde0ea" stroke-width="1.5"/>
+  <rect x="10" y="34" width="80" height="18" rx="5" fill="#e8eaf2" stroke="#dde0ea" stroke-width="1.5"/>
+  <rect x="45" y="34" width="10" height="56" fill="#dde0ea" opacity=".6"/>
+  <rect x="10" y="59" width="80" height="7" fill="#dde0ea" opacity=".4"/>
+  <rect x="36" y="53" width="28" height="18" rx="4" fill="#c8cdd8"/>
+  <path d="M40,53 Q40,43 50,43 Q60,43 60,53" stroke="#b8bdd0" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="50" cy="62" r="4.5" fill="#aab0c8"/>
+</svg>`; }
+
+function svgAvailable(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="12" y="46" width="76" height="48" rx="6" fill="#fff3f4" stroke="#E8192C" stroke-width="2"/>
+  <rect x="46" y="46" width="8" height="48" fill="#E8192C" opacity=".7"/>
+  <rect x="12" y="61" width="76" height="8" fill="#E8192C" opacity=".7"/>
+  <rect x="8" y="31" width="84" height="20" rx="5" fill="#fff7f7" stroke="#E8192C" stroke-width="2"/>
+  <rect x="46" y="31" width="8" height="20" fill="#E8192C" opacity=".7"/>
+  <ellipse cx="36" cy="31" rx="14" ry="9" fill="#ffccd0" transform="rotate(-22,36,31)"/>
+  <ellipse cx="64" cy="31" rx="14" ry="9" fill="#ffccd0" transform="rotate(22,64,31)"/>
+  <circle cx="50" cy="31" r="8" fill="#E8192C"/>
+  <circle cx="50" cy="31" r="4" fill="#fff"/>
+</svg>`; }
+
+function svgOpened(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="12" y="46" width="76" height="48" rx="6" fill="#edf7f1" stroke="#b8dfc8" stroke-width="1.5"/>
+  <rect x="12" y="61" width="76" height="8" fill="#b8dfc8" opacity=".5"/>
+  <rect x="8" y="23" width="84" height="20" rx="5" fill="#e0f0e8" stroke="#b8dfc8" stroke-width="1.5" transform="rotate(-12,50,33)" opacity=".7"/>
+  <polyline points="30,72 45,86 72,52" stroke="#1a7a35" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`; }
+
+function svgExpired(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect x="12" y="46" width="76" height="48" rx="6" fill="#f2f2f5" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <rect x="8" y="31" width="84" height="20" rx="5" fill="#eeeef2" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="30" y1="30" x2="70" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
+  <line x1="70" y1="30" x2="30" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
+</svg>`; }
+
+function renderGrid() {
+  const grid = document.getElementById('boxGrid');
+  grid.innerHTML = '';
+  SCHEDULE.forEach((item, i) => {
+    const state = getState(item);
+    const card  = document.createElement('div');
+    const cssState = state === 'coming' ? 'coming' : state === 'locked' ? 'future' : state;
+    card.className = 'box-card ' + cssState;
+    const d = dl(item.date);
+    let html = '';
+    if (state === 'available') {
+      html = `<div class="card-shimmer"></div>
+      <div class="card-inner">
+        <div class="card-date">🔴 ${d} ${item.day} — СЬОГОДНІ</div>
+        <div class="card-graphic">${svgAvailable()}</div>
+        <button class="card-cta" onclick="openBox(${i})">Відкрити 🎁</button>
+      </div>`;
+    } else if (state === 'opened') {
+      html = `<div class="card-inner">
+        <div class="card-date">✓ ${d} ${item.day}</div>
+        <div class="card-graphic">${svgOpened()}</div>
+        <div class="card-opened">
+          <div class="card-opened-disc">-${item.discount}%</div>
+          <div class="card-opened-name">${item.group}</div>
+        </div>
+      </div>`;
+    } else if (state === 'expired') {
+      html = `<div class="card-inner">
+        <div class="card-date" style="color:#bbb;">⛔ ${d} ${item.day}</div>
+        <div class="card-graphic">${svgExpired()}</div>
+        <div class="card-expired-label">Акція закінчилась</div>
+      </div>`;
+    } else if (state === 'coming') {
+      html = `<div class="card-inner">
+        <div class="card-date">${d} ${item.day}</div>
+        <div class="card-graphic">${svgLocked()}</div>
+        <div class="card-locked-label">Відкриється о 9:00</div>
+      </div>`;
+    } else {
+      html = `<div class="card-inner">
+        <div class="card-date">${d} ${item.day}</div>
+        <div class="card-graphic">${svgLocked()}</div>
+        <div class="card-future-label">з ${d}</div>
+      </div>`;
+    }
+    card.innerHTML = html;
+    grid.appendChild(card);
+  });
+  document.getElementById('boxesLeftNum').textContent =
+    SCHEDULE.filter(s => { const st = getState(s); return st === 'available' || st === 'coming' || st === 'locked'; }).length;
+}
+
+function copyPromo() {
+  navigator.clipboard.writeText(document.getElementById('popupPromo').textContent).then(() => {
+    const el = document.getElementById('promoCopied');
+    el.textContent = '✓ Скопійовано!';
+    setTimeout(() => el.textContent = '', 2000);
+  });
+}
+
+let ovTimer = null;
+function startPopupCountdown() {
+  clearInterval(ovTimer);
+  const today    = todayStr();
+  const deadline = new Date(today + 'T' + String(BOX_CLOSE_HOUR).padStart(2,'0') + ':00:00');
+  const tick = () => {
+    const diff = deadline - Date.now();
+    const el   = document.getElementById('popupCountdown');
+    if (!el) return;
+    if (diff <= 0) {
+      clearInterval(ovTimer);
+      el.textContent = '00:00';
+      el.classList.add('dim');
+      document.getElementById('promoBlock').classList.add('code-gone');
+      return;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.textContent = h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+    el.classList.toggle('dim', diff < 10 * 60 * 1000);
+  };
+  tick();
+  ovTimer = setInterval(tick, 1000);
+}
+
+function openBox(i) {
+  const item = SCHEDULE[i];
+  const promoBlock = document.getElementById('promoBlock');
+  promoBlock.classList.remove('code-gone');
+  document.getElementById('popupCountdown').classList.remove('dim');
+  document.getElementById('popupDiscount').textContent = '-' + item.discount + '%';
+  document.getElementById('popupProduct').textContent  = item.group;
+  document.getElementById('popupSkus').textContent     = item.skus;
+  document.getElementById('popupPromo').textContent    = item.promo;
+  document.getElementById('promoCopied').textContent   = '';
+  const next = SCHEDULE.find(s => s.date > item.date);
+  document.getElementById('popupNext').innerHTML = next
+    ? `📦 Наступна коробка: <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`
+    : '🏁 Це остання коробка червня!';
+  document.getElementById('overlay').classList.add('active');
+  startPopupCountdown();
+  launchConfetti();
+}
+
+function closeOverlay() {
+  document.getElementById('overlay').classList.remove('active');
+  clearInterval(ovTimer);
+}
+document.getElementById('overlay').addEventListener('click', e => {
+  if (e.target.id === 'overlay') closeOverlay();
+});
+
+function setCd(h, m, s) {
+  document.getElementById('cdH').textContent = h;
+  document.getElementById('cdM').textContent = m;
+  document.getElementById('cdS').textContent = s;
+}
+
+function updateCountdown() {
+  const today = todayStr(), now = new Date(), h = now.getHours() + now.getMinutes()/60;
+  const todayItem = SCHEDULE.find(s => s.date === today);
+  const titleEl   = document.getElementById('cdTitle');
+  if (todayItem) {
+    if (h < BOX_OPEN_HOUR) {
+      const open9 = new Date(today + 'T09:00:00'), diff = open9 - now;
+      titleEl.textContent = '🎁 Коробка відкриється о 9:00';
+      titleEl.classList.remove('urgent');
+      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
+      document.getElementById('cdNext').textContent = '';
+    } else if (h < BOX_CLOSE_HOUR) {
+      const close12 = new Date(today + 'T' + String(BOX_CLOSE_HOUR).padStart(2,'0') + ':00:00');
+      const diff = close12 - now;
+      const isUrgent = diff < 15 * 60 * 1000;
+      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 12:00' : '⏱ До кінця акції залишилось';
+      titleEl.classList.toggle('urgent', isUrgent);
+      ['cdH','cdM','cdS'].forEach(id => document.getElementById(id).classList.toggle('urgent', isUrgent));
+      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
+      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
+    } else {
+      titleEl.textContent = '⛔ Сьогоднішня акція завершена';
+      titleEl.classList.remove('urgent');
+      setCd('00','00','00');
+      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
+    }
+    return;
+  }
+  titleEl.classList.remove('urgent');
+  const next = SCHEDULE.find(s => s.date > today);
+  if (!next) {
+    titleEl.textContent = '🎉 Усі коробки відкрито. До зустрічі у липні!';
+    setCd('--','--','--');
+    document.getElementById('cdNext').textContent = '';
+    return;
+  }
+  const nextDate = new Date(next.date + 'T09:00:00'), diff = nextDate - now;
+  titleEl.textContent = `До наступної коробки · ${dl(next.date)} ${next.day} · ${next.group}`;
+  setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
+  document.getElementById('cdNext').innerHTML =
+    `📦 Наступна коробка відкриється <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;
+}
+
+function nextBoxLine(cur) {
+  const next = SCHEDULE.find(s => s.date > cur);
+  if (!next) return '';
+  return `📦 Наступна коробка: <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;
+}
+
+const confettiCanvas = document.getElementById('confettiCanvas');
+const cctx = confettiCanvas.getContext('2d');
+let confettiPieces = [], confettiAnim = null;
+const CONFETTI_COLORS = ['#E8192C','#ff6b7a','#ffb3bb','#f0a500','#ffe0b2','#ffd54f','#1a7a35','#b8dfc8','#69c97a','#ffffff','#e3e6ff','#c5cae9'];
+
+function launchConfetti() {
+  confettiCanvas.style.display = 'block';
+  confettiCanvas.width  = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+  confettiPieces = [];
+  const cx = confettiCanvas.width / 2;
+  const cy = confettiCanvas.height / 2;
+  for (let i = 0; i < 160; i++) {
+    const angle = -Math.PI/2 + (Math.random() - 0.5) * Math.PI * 1.8;
+    const speed = 6 + Math.random() * 14;
+    const type  = Math.random() < 0.4 ? 'ribbon' : Math.random() < 0.6 ? 'rect' : 'circle';
+    confettiPieces.push({
+      x: cx + (Math.random()-0.5)*60, y: cy,
+      vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+      color: CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)],
+      type, w: type==='ribbon' ? 3+Math.random()*2 : 6+Math.random()*8,
+      h: type==='ribbon' ? 14+Math.random()*16 : 6+Math.random()*8,
+      r: 3+Math.random()*5, rot: Math.random()*Math.PI*2, rotV: (Math.random()-0.5)*0.3,
+      life: 1, decay: 0.007 + Math.random()*0.008, gravity: 0.18 + Math.random()*0.1, swing: (Math.random()-0.5)*0.15,
+    });
+  }
+  if (confettiAnim) cancelAnimationFrame(confettiAnim);
+  animConfetti();
+}
+
+function animConfetti() {
+  cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+  confettiPieces.forEach(p => {
+    p.x += p.vx + Math.sin(p.rot) * p.swing; p.y += p.vy; p.vy += p.gravity;
+    p.rot += p.rotV; p.life -= p.decay;
+    cctx.save(); cctx.globalAlpha = Math.max(0, p.life); cctx.fillStyle = p.color;
+    cctx.translate(p.x, p.y); cctx.rotate(p.rot);
+    if (p.type === 'circle') { cctx.beginPath(); cctx.arc(0,0,p.r,0,Math.PI*2); cctx.fill(); }
+    else { cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); if(p.type!=='ribbon'){cctx.fillStyle='rgba(0,0,0,0.15)';cctx.fillRect(-p.w/2,p.h/4,p.w,p.h/4);} }
+    cctx.restore();
+  });
+  confettiPieces = confettiPieces.filter(p => p.life > 0 && p.y < confettiCanvas.height + 50);
+  if (confettiPieces.length > 0) { confettiAnim = requestAnimationFrame(animConfetti); }
+  else { cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); confettiCanvas.style.display='none'; }
+}
+
+(function initLeaves() {
+  const wrap = document.getElementById('leavesWrap');
+  const LEAF_SVGS = [
+    `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="12" rx="6" ry="11" fill="currentColor" transform="rotate(-20,12,12)"/></svg>`,
+    `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="7" rx="5" ry="7" fill="currentColor"/><ellipse cx="7" cy="15" rx="5" ry="7" fill="currentColor" transform="rotate(-60,7,15)"/><ellipse cx="17" cy="15" rx="5" ry="7" fill="currentColor" transform="rotate(60,17,15)"/></svg>`,
+    `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="20" r="2.5" fill="currentColor"/><line x1="12" y1="17" x2="12" y2="4" stroke="currentColor" stroke-width="1"/><g stroke="currentColor" stroke-width="1"><line x1="12" y1="4" x2="9" y2="1"/><line x1="12" y1="4" x2="15" y2="1"/><line x1="12" y1="4" x2="8" y2="3"/><line x1="12" y1="4" x2="16" y2="3"/><line x1="12" y1="4" x2="12" y2="1"/></g></svg>`,
+  ];
+  const COLORS = ['#2d9e5c','#1a7a35','#4caf6a','#8bc99a','#c8e6c9','#f0a500','#ffe082'];
+  for (let i = 0; i < 14; i++) {
+    const el = document.createElement('div');
+    el.className = 'leaf';
+    const size = 14 + Math.random() * 20, left = Math.random() * 100;
+    const dur = 18 + Math.random() * 26, delay = Math.random() * -dur;
+    const driftX = (Math.random() - 0.5) * 160;
+    const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    el.style.cssText = `left:${left}%;width:${size}px;height:${size}px;color:${color};animation-duration:${dur}s;animation-delay:${delay}s;--lx:${driftX}px;`;
+    el.innerHTML = LEAF_SVGS[i % LEAF_SVGS.length];
+    wrap.appendChild(el);
+  }
+})();
+
+renderGrid();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+setInterval(renderGrid, 60000);
+</script>
+</body>
+</html>
