@@ -162,7 +162,7 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 <section class="hero">
   <div class="hero-tag">⚡ Тільки для дистриб'юторів Luxel</div>
   <h2>Відкривай <em>нову знижку</em><br>кожного ранку</h2>
-  <p>Щодня з 9:00 до 11:00 — нова коробка з ексклюзивною акцією</p>
+  <p>Щодня з 9:00 до 12:00 — нова коробка з ексклюзивною акцією</p>
 </section>
 
 <div class="countdown-wrap">
@@ -224,7 +224,7 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 </div>
 
 <footer class="footer">
-  LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Знижки діють з 9:00 до 11:00 · Оформити замовлення можна впродовж 60 хвилин після відкриття
+  LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Знижки діють з 9:00 до 12:00 · Оформити замовлення можна впродовж 60 хвилин після відкриття
 </footer>
 
 <script>
@@ -233,7 +233,7 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
 // After opening popup: 60-min personal countdown, then promo disappears
 
 const BOX_OPEN_HOUR  = 9;   // 09:00
-const BOX_CLOSE_HOUR = 11;  // 11:00
+const BOX_CLOSE_HOUR = 12;  // 12:00
 const PROMO_MIN      = 60;  // minutes after popup open
 
 const SCHEDULE = [
@@ -458,7 +458,7 @@ function updateCountdown() {
       // 9:00–11:00 — window open
       const close11 = new Date(today + 'T11:00:00'), diff = close11 - now;
       const isUrgent = diff < 15 * 60 * 1000;
-      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 11:00' : '⏱ Акція активна до 11:00 — залишилось';
+      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 11:00' : '⏱ Акція активна до 12:00 — залишилось';
       titleEl.classList.toggle('urgent', isUrgent);
       ['cdH','cdM','cdS'].forEach(id => document.getElementById(id).classList.toggle('urgent', isUrgent));
       setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
