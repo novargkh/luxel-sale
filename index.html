@@ -92,7 +92,36 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .popup-discount{font-size:64px;font-weight:900;color:#fff;line-height:1;text-shadow:0 4px 20px rgba(0,0,0,.2);position:relative;z-index:1;animation:discIn .4s .35s cubic-bezier(.34,1.56,.64,1) both;}
 @keyframes discIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
 /* POPUP BODY */
-.popup-body{padding:24px 32px 28px;display:flex;flex-direction:column;gap:14px;}
+.popup-body{padding:20px 28px 26px;display:flex;flex-direction:column;gap:12px;}
+.popup-product-name{font-size:19px;font-weight:800;color:var(--dark);text-align:center;line-height:1.2;}
+.popup-product-skus{font-size:12px;color:var(--muted);text-align:center;background:#f5f5f8;border-radius:10px;padding:9px 14px;line-height:1.7;font-weight:500;}
+.popup-promo{display:flex;flex-direction:column;gap:6px;}
+.popup-promo-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;text-align:center;}
+.popup-promo-code{font-size:30px;font-weight:900;letter-spacing:5px;color:var(--red);background:var(--red-soft);border:2.5px dashed var(--red-mid);border-radius:14px;padding:14px 12px 12px;text-align:center;cursor:pointer;user-select:all;transition:background .15s,transform .1s;}
+.popup-promo-code:hover{background:#ffe0e2;transform:scale(1.02);}
+.popup-promo-code:active{transform:scale(.98);}
+.popup-promo-hint{font-size:11px;color:var(--muted);text-align:center;}
+.popup-promo-copied{color:var(--green);font-weight:700;text-align:center;font-size:13px;min-height:16px;}
+.popup-promo-expired{display:none;color:#aaa;font-size:12px;text-align:center;}
+.code-gone .popup-promo-code,.code-gone .popup-promo-hint{opacity:.35;pointer-events:none;}
+.code-gone .popup-promo-expired{display:block;}
+.popup-timer{display:flex;align-items:center;justify-content:space-between;background:#f8f8fb;border-radius:10px;padding:10px 16px;}
+.popup-timer-label{font-size:12px;color:var(--muted);font-weight:600;}
+.popup-timer-val{font-size:18px;font-weight:900;color:var(--dark);font-variant-numeric:tabular-nums;}
+.popup-timer-val.dim{color:var(--red);}
+.popup-next{font-size:12px;color:var(--muted);text-align:center;line-height:1.5;}
+.popup-order{display:block;text-align:center;background:var(--red);color:#fff;font-weight:800;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:16px;border-radius:var(--r-sm);text-decoration:none;transition:background .15s,transform .1s;box-shadow:0 4px 16px rgba(232,25,44,.3);}
+.popup-order:hover{background:var(--red-hover);transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,25,44,.4);}
+.popup-order:active{transform:scale(.98);}
+.popup-close{background:none;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:10px;width:100%;font-family:inherit;font-size:14px;color:var(--muted);cursor:pointer;font-weight:600;transition:border-color .15s,color .15s;}
+.popup-close:hover{border-color:var(--dark);color:var(--dark);}
+/* special discount badge */
+.popup-discount-special{font-size:40px;font-weight:900;color:#fff;line-height:1.1;position:relative;z-index:1;animation:discIn .4s .35s cubic-bezier(.34,1.56,.64,1) both;}
+/* WEEKEND CARD */
+.box-card.weekend{background:#f4f4f8;border:1.5px solid #e4e4ee;box-shadow:none;opacity:.55;}
+.card-weekend-label{font-size:12px;color:#aaa;font-weight:600;letter-spacing:.3px;}
+/* IMPROVED OPENED CARD */
+.card-opened-promo{font-size:11px;font-weight:700;color:#4a9a6a;letter-spacing:1.5px;background:var(--green-soft);border-radius:6px;padding:2px 8px;display:inline-block;margin-top:3px;}
 
 /* ── SUMMER DECORATIONS ───────────────────────────────── */
 /* Sun in hero */
@@ -174,24 +203,18 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
       <div class="popup-discount" id="popupDiscount">-15%</div>
     </div>
     <div class="popup-body">
-      <div class="popup-product">
-        <div class="popup-product-name" id="popupProduct">Товар дня</div>
-        <div class="popup-product-skus"  id="popupSkus"></div>
-      </div>
+      <div class="popup-product-name" id="popupProduct">Товар дня</div>
+      <div class="popup-product-skus" id="popupSkus"></div>
       <div class="popup-promo" id="promoBlock">
         <div class="popup-promo-label">Промокод — вкажи у коментарі до замовлення</div>
         <div class="popup-promo-code" id="popupPromo" onclick="copyPromo()">XXXX</div>
-        <div class="popup-promo-hint">Натисни щоб скопіювати</div>
+        <div class="popup-promo-hint">👆 Натисни, щоб скопіювати</div>
         <div class="popup-promo-copied" id="promoCopied"></div>
         <div class="popup-promo-expired" id="promoExpired">⏱ Час для замовлення вийшов</div>
       </div>
-      <div class="popup-timer" id="popupTimerRow">
-        <span class="popup-timer-label">⏱ До кінця акції (12:00)</span>
-        <span class="popup-timer-val" id="popupCountdown">60:00</span>
-      </div>
       <div class="popup-next" id="popupNext"></div>
       <a class="popup-order" href="https://luxel.ua/optorder" target="_blank">🛒 Оформити замовлення</a>
-      <button class="popup-close" onclick="closeOverlay()">Закрити</button>
+      <button class="popup-close" onclick="closeOverlay()">✕ Закрити</button>
     </div>
   </div>
 </div>
@@ -210,25 +233,31 @@ const BOX_CLOSE_HOUR = 12;  // 12:00
 const PROMO_MIN      = 60;  // minutes after popup open
 
 const SCHEDULE = [
-  {date:"2026-06-03",day:"Ср",group:"Лампи А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",              discount:15,promo:"A60X"},
-  {date:"2026-06-04",day:"Чт",group:"OPERA білий",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся біла серія",        discount:15,promo:"OPRA"},
-  {date:"2026-06-05",day:"Пт",group:"JAZZ білий",            skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",                  discount:15,promo:"JAZZ"},
-  {date:"2026-06-09",day:"Пн",group:"Лампи C37 / C35",       skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                       discount:15,promo:"C37K"},
-  {date:"2026-06-10",day:"Вт",group:"OPERA чорний",          skus:"2101 · 2102 · 2104 · 2107 · 2108",                         discount:20,promo:"OPBK"},
-  {date:"2026-06-11",day:"Ср",group:"Лампи G45",             skus:"053-NE · 056-NE · 057-NE · 058-NE",                        discount:20,promo:"G45L"},
-  {date:"2026-06-12",day:"Чт",group:"JAZZ графіт + чорний",  skus:"9101Р · 9102Р · 9107Р · 9701Р · 9702Р — усі",             discount:15,promo:"JZGR"},
-  {date:"2026-06-13",day:"Пт",group:"BSR / BSO",             skus:"BSR-12N/C · BSR-20N/C · BSO-12N/C · BSO-20N/C · BSRS",    discount:20,promo:"BSRX"},
-  {date:"2026-06-16",day:"Пн",group:"Лампи T8",              skus:"T8-0.6-10w · T8-1.2-18w · усі моделі без порогу",         discount:12,promo:"T8XX"},
-  {date:"2026-06-17",day:"Вт",group:"PRIMERA білий",         skus:"3001 · 3002 · 3003 · 3004 · 3007 · 3008 + серія",          discount:10,promo:"PR1M"},
-  {date:"2026-06-18",day:"Ср",group:"Лампи MR16",            skus:"010-NE · 012-NE · 014-NE · усі GU5.3",                     discount:15,promo:"MR16"},
-  {date:"2026-06-19",day:"Чт",group:"LX3012 лінійні",        skus:"LX3012-0.6-18 · LX3012-1.2-36 · LX3012-1.5-45",           discount:10,promo:"LX30"},
-  {date:"2026-06-20",day:"Пт",group:"OPERA кольорові",       skus:"Сосна · Вишня · Крем — вся палітра",                       discount:20,promo:"OPRC"},
-  {date:"2026-06-23",day:"Пн",group:"Лампи А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",     discount:20,promo:"A6X2"},
-  {date:"2026-06-24",day:"Вт",group:"JAZZ кольорові",        skus:"Теракота · Бронза · Крем — вся палітра",                   discount:20,promo:"JZCL"},
-  {date:"2026-06-25",day:"Ср",group:"Лампи C37",             skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                       discount:20,promo:"C37X"},
-  {date:"2026-06-26",day:"Чт",group:"Двійники / перехідники",skus:"1016 · 1036 · 1024 · аналоги",                             discount:20,promo:"DV2K"},
-  {date:"2026-06-27",day:"Пт",group:"OPERA білий",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся біла серія",        discount:20,promo:"OP27"},
-  {date:"2026-06-30",day:"Пн",group:"BSR / BSO",             skus:"Усі моделі BSR · BSO · BSRS",                              discount:20,promo:"BSRZ"},
+  // ── ТИЖДЕНЬ 1 ──
+  {date:"2026-06-03",day:"Ср",group:"Лампи А60",       skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",           discount:15,   promo:"A60X"},
+  {date:"2026-06-04",day:"Чт",group:"Лампи А60",       skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",           discount:15,   promo:"A60X"},
+  {date:"2026-06-05",day:"Пт",group:"DLD",             skus:"Всі моделі",                                            discount:10,   promo:"DLD10"},
+  {date:"2026-06-06",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  {date:"2026-06-07",day:"Нд",group:"",                skus:"",                                                      discount:null, promo:null},
+  // ── ТИЖДЕНЬ 2 ──
+  {date:"2026-06-10",day:"Ср",group:"OPERA чорний",    skus:"2101 · 2102 · 2104 · 2107 · 2108",                     discount:20,   promo:"OPBK"},
+  {date:"2026-06-11",day:"Чт",group:"Лампи G45",       skus:"053-NE · 056-NE · 057-NE · 058-NE",                    discount:20,   promo:"G45L"},
+  {date:"2026-06-12",day:"Пт",group:"SSWL",            skus:"Всі моделі",                                            discount:10,   promo:"SSWL1"},
+  {date:"2026-06-13",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  // ── ТИЖДЕНЬ 3 ──
+  {date:"2026-06-16",day:"Вт",group:"Датчик руху MS",  skus:"Всі моделі",                                            discount:5,    promo:"MS5DT"},
+  {date:"2026-06-17",day:"Ср",group:"BENEFICE",        skus:"Всі моделі",                                            discount:15,   promo:"BNF15"},
+  {date:"2026-06-18",day:"Чт",group:"DL-12N",          skus:"DL-12N",                                                discount:"1+1",promo:"DL121"},
+  {date:"2026-06-19",day:"Пт",group:"DLSG / DLRG",     skus:"Всі моделі",                                            discount:15,   promo:"DLG15"},
+  {date:"2026-06-20",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  // ── ТИЖДЕНЬ 4 ──
+  {date:"2026-06-23",day:"Вт",group:"Лампи А60",       skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE", discount:20,   promo:"A6X2"},
+  {date:"2026-06-24",day:"Ср",group:"JAZZ кольорові",  skus:"Теракота · Бронза · Крем — вся палітра",               discount:20,   promo:"JZCL"},
+  {date:"2026-06-25",day:"Чт",group:"Лампи C37",       skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                   discount:20,   promo:"C37X"},
+  {date:"2026-06-26",day:"Пт",group:"Умови оплати",    skus:"Приймаємо б/г платежі по звичайному курсу та ФОП 0%",  discount:null, promo:null, info:true},
+  {date:"2026-06-27",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  // ── ТИЖДЕНЬ 5 ──
+  {date:"2026-06-30",day:"Вт",group:"LPM",             skus:"Всі моделі",                                            discount:10,   promo:"LPM10"},
 ];
 
 /* ── HELPERS ───────────────────────────────────────────── */
@@ -238,8 +267,13 @@ const dl  = d => d.slice(8)+'.'+d.slice(5,7);
 
 function nowHour() { return new Date().getHours() + new Date().getMinutes()/60; }
 
-// States: opened | available | locked
+// States: weekend | opened | available | locked
+function isWeekend(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.getDay() === 0 || d.getDay() === 6; // Sun=0, Sat=6
+}
 function getState(item) {
+  if (isWeekend(item.date)) return 'weekend';
   const t = todayStr();
   if (item.date < t) return 'opened';
   if (item.date > t) return 'locked';
@@ -283,19 +317,40 @@ function svgExpired(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.o
   <line x1="70" y1="30" x2="30" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
 </svg>`; }
 
+function svgWeekend(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="38" r="22" fill="#e8eaf2" stroke="#d0d4e8" stroke-width="2"/>
+  <path d="M36,38 Q50,22 64,38 Q50,54 36,38Z" fill="#c8ccd8" opacity=".6"/>
+  <circle cx="50" cy="38" r="8" fill="#b8bdd0"/>
+  <ellipse cx="50" cy="82" rx="28" ry="10" fill="#e0e4f0" stroke="#d0d4e8" stroke-width="1.5"/>
+  <rect x="44" y="52" width="12" height="24" rx="4" fill="#c8ccd8"/>
+</svg>`; }
+
 /* ── GRID ──────────────────────────────────────────────── */
+function discLabel(d) {
+  if (!d && d !== 0) return '';
+  if (typeof d === 'string') return d; // "1+1", "3+1"
+  return '-' + d + '%';
+}
+
 function renderGrid() {
   const grid = document.getElementById('boxGrid');
   grid.innerHTML = '';
   SCHEDULE.forEach((item, i) => {
     const state = getState(item);
     const card  = document.createElement('div');
-    const cssState = state === 'coming' ? 'coming' : state === 'locked' ? 'future' : state;
-    card.className = 'box-card ' + cssState;
+    // CSS class mapping
+    const cssMap = {weekend:'weekend', opened:'opened', available:'available', expired:'expired', locked:'future'};
+    card.className = 'box-card ' + (cssMap[state] || 'future');
     const d = dl(item.date);
     let html = '';
 
-    if (state === 'available') {
+    if (state === 'weekend') {
+      html = `<div class="card-inner">
+        <div class="card-date">${d} ${item.day}</div>
+        <div class="card-graphic">${svgWeekend()}</div>
+        <div class="card-weekend-label">Вихідний 🌿</div>
+      </div>`;
+    } else if (state === 'available') {
       html = `<div class="card-shimmer"></div>
       <div class="card-inner">
         <div class="card-date">🔴 ${d} ${item.day} — СЬОГОДНІ</div>
@@ -303,12 +358,18 @@ function renderGrid() {
         <button class="card-cta" onclick="openBox(${i})">Відкрити 🎁</button>
       </div>`;
     } else if (state === 'opened') {
+      const disc = discLabel(item.discount);
+      const isInfo = item.info;
       html = `<div class="card-inner">
         <div class="card-date">✓ ${d} ${item.day}</div>
         <div class="card-graphic">${svgOpened()}</div>
         <div class="card-opened">
-          <div class="card-opened-disc">-${item.discount}%</div>
-          <div class="card-opened-name">${item.group}</div>
+          ${isInfo
+            ? `<div class="card-opened-disc" style="font-size:20px">ℹ️</div><div class="card-opened-name">${item.group}</div>`
+            : `<div class="card-opened-disc">${disc}</div>
+               <div class="card-opened-name">${item.group}</div>
+               ${item.promo ? `<div class="card-opened-promo">${item.promo}</div>` : ''}`
+          }
         </div>
       </div>`;
     } else if (state === 'expired') {
@@ -317,14 +378,8 @@ function renderGrid() {
         <div class="card-graphic">${svgExpired()}</div>
         <div class="card-expired-label">Акція закінчилась</div>
       </div>`;
-    } else if (state === 'coming') {
-      html = `<div class="card-inner">
-        <div class="card-date">${d} ${item.day}</div>
-        <div class="card-graphic">${svgLocked()}</div>
-        <div class="card-locked-label">Відкриється о 9:00</div>
-      </div>`;
     } else {
-      // future locked
+      // locked/future
       html = `<div class="card-inner">
         <div class="card-date">${d} ${item.day}</div>
         <div class="card-graphic">${svgLocked()}</div>
@@ -335,10 +390,7 @@ function renderGrid() {
     grid.appendChild(card);
   });
   document.getElementById('boxesLeftNum').textContent =
-    SCHEDULE.filter(s => {
-      const st = getState(s);
-      return st === 'available' || st === 'coming' || st === 'locked';
-    }).length;
+    SCHEDULE.filter(s => ['available','locked'].includes(getState(s))).length;
 }
 
 /* ── PROMO COPY ────────────────────────────────────────── */
@@ -383,25 +435,39 @@ function startPopupCountdown() {
 /* ── OPEN BOX ──────────────────────────────────────────── */
 function openBox(i) {
   const item = SCHEDULE[i];
-
-  // Reset promo state
   const promoBlock = document.getElementById('promoBlock');
   promoBlock.classList.remove('code-gone');
-  document.getElementById('popupCountdown').classList.remove('dim');
 
-  document.getElementById('popupDiscount').textContent = '-' + item.discount + '%';
-  document.getElementById('popupProduct').textContent  = item.group;
-  document.getElementById('popupSkus').textContent     = item.skus;
-  document.getElementById('popupPromo').textContent    = item.promo;
-  document.getElementById('promoCopied').textContent   = '';
+  // Discount label
+  const disc = discLabel(item.discount);
+  const discEl = document.getElementById('popupDiscount');
+  if (item.info) {
+    discEl.textContent = 'ℹ️';
+    discEl.style.fontSize = '48px';
+  } else {
+    discEl.textContent = disc || '🎁';
+    discEl.style.fontSize = '';
+  }
 
-  const next = SCHEDULE.find(s => s.date > item.date);
-  document.getElementById('popupNext').innerHTML = next
-    ? `📦 Наступна коробка: <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`
+  document.getElementById('popupProduct').textContent = item.group;
+  document.getElementById('popupSkus').textContent    = item.skus || '';
+
+  // Promo block
+  if (item.promo) {
+    promoBlock.style.display = '';
+    document.getElementById('popupPromo').textContent  = item.promo;
+    document.getElementById('promoCopied').textContent = '';
+  } else {
+    promoBlock.style.display = 'none';
+  }
+
+  // Next box
+  const nextItem = SCHEDULE.find(s => s.date > item.date && !isWeekend(s.date) && !s.info);
+  document.getElementById('popupNext').innerHTML = nextItem
+    ? `📦 Наступна коробка: <strong>${dl(nextItem.date)} (${nextItem.day})</strong>`
     : '🏁 Це остання коробка червня!';
 
   document.getElementById('overlay').classList.add('active');
-  startPopupCountdown();
   launchConfetti();
 }
 
