@@ -267,7 +267,7 @@ const dl  = d => d.slice(8)+'.'+d.slice(5,7);
 
 function nowHour() { return new Date().getHours() + new Date().getMinutes()/60; }
 
-// States: weekend | opened | available | locked
+// States: weekend | opened | available | expired | locked
 function isWeekend(dateStr) {
   const d = new Date(dateStr + 'T12:00:00');
   return d.getDay() === 0 || d.getDay() === 6; // Sun=0, Sat=6
@@ -277,7 +277,11 @@ function getState(item) {
   const t = todayStr();
   if (item.date < t) return 'opened';
   if (item.date > t) return 'locked';
-  return 'available'; // today — always available
+  // today — check time window 9:00–12:00
+  const h = nowHour();
+  if (h < BOX_OPEN_HOUR)  return 'locked';   // before 9:00 — locked
+  if (h < BOX_CLOSE_HOUR) return 'available'; // 9:00–12:00
+  return 'expired'; // after 12:00 — акція завершена
 }
 
 /* ── SVGs ──────────────────────────────────────────────── */
@@ -337,6 +341,7 @@ function renderGrid() {
   grid.innerHTML = '';
   SCHEDULE.forEach((item, i) => {
     const state = getState(item);
+    if (state === 'weekend') return; // не показуємо вихідні
     const card  = document.createElement('div');
     // CSS class mapping
     const cssMap = {weekend:'weekend', opened:'opened', available:'available', expired:'expired', locked:'future'};
@@ -492,11 +497,26 @@ function updateCountdown() {
   const titleEl   = document.getElementById('cdTitle');
 
   if (todayItem) {
-    // Today has a box — always available, show countdown to tomorrow's box
-    titleEl.textContent = '🎁 Сьогодні є коробка! Відкрий прямо зараз';
-    titleEl.classList.remove('urgent');
-    setCd('--', '--', '--');
-    document.getElementById('cdNext').innerHTML = nextBoxLine(today);
+    if (h < BOX_OPEN_HOUR) {
+      const open9 = new Date(today + 'T09:00:00'), diff = open9 - now;
+      titleEl.textContent = '🎁 Коробка відкриється о 9:00';
+      titleEl.classList.remove('urgent');
+      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
+      document.getElementById('cdNext').textContent = '';
+    } else if (h < BOX_CLOSE_HOUR) {
+      const close12 = new Date(today + 'T12:00:00'), diff = close12 - now;
+      const isUrgent = diff < 15 * 60 * 1000;
+      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 12:00' : '⏱ До кінця акції залишилось';
+      titleEl.classList.toggle('urgent', isUrgent);
+      ['cdH','cdM','cdS'].forEach(id => document.getElementById(id).classList.toggle('urgent', isUrgent));
+      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
+      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
+    } else {
+      titleEl.textContent = '⛔ Сьогоднішня акція завершена';
+      titleEl.classList.remove('urgent');
+      setCd('00','00','00');
+      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
+    }
     return;
   }
 
