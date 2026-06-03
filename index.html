@@ -1,1012 +1,513 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXEL — Калейдоскоп скидок | Июнь 2026</title>
+<title>LUXEL — Калейдоскоп знижок | Червень 2026</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;900&display=swap');
 
   :root {
-    --red: #E8192C;
-    --gold: #FFD700;
-    --gold2: #FFA500;
-    --dark: #0a0a0f;
-    --card-bg: #13131f;
-    --card-border: #2a2a40;
-    --locked: #1a1a2e;
-    --text: #e8e8f0;
-    --muted: #666688;
+    --red:       #E8192C;
+    --red-light: #fff0f1;
+    --green:     #1a8a3a;
+    --green-bg:  #f0faf4;
+    --dark:      #1a1a2a;
+    --body-bg:   #f4f5f7;
+    --card-bg:   #ffffff;
+    --card-border: #e4e6ed;
+    --locked-bg: #f8f9fb;
+    --text:      #1a1a2a;
+    --muted:     #8890a8;
+    --shadow:    0 2px 12px rgba(0,0,0,0.07);
+    --shadow-hover: 0 6px 24px rgba(232,25,44,0.15);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--dark);
+    background: var(--body-bg);
     color: var(--text);
     font-family: 'Exo 2', 'Arial', sans-serif;
     min-height: 100vh;
-    overflow-x: hidden;
   }
 
-  /* ── HEADER ─────────────────────────────────────── */
   .header {
-    background: linear-gradient(135deg, #1a0008 0%, #0a0a0f 50%, #000510 100%);
-    border-bottom: 2px solid var(--red);
-    padding: 20px 40px;
+    background: #fff;
+    border-bottom: 3px solid var(--red);
+    padding: 16px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
-
-  .logo {
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #fff;
-    text-shadow: 0 0 20px rgba(232,25,44,0.6);
-  }
+  .logo { font-size: 26px; font-weight: 900; letter-spacing: 3px; color: var(--dark); }
   .logo span { color: var(--red); }
+  .logo sub { font-size: 11px; font-weight: 400; color: var(--muted); letter-spacing: 0; margin-left: 2px; }
+  .header-title { text-align: center; }
+  .header-title h1 { font-size: 17px; font-weight: 700; color: var(--dark); }
+  .header-title p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .boxes-left { text-align: right; }
+  .boxes-left .num { font-size: 34px; font-weight: 900; color: var(--red); line-height: 1; }
+  .boxes-left .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
 
-  .header-title {
-    text-align: center;
-  }
-  .header-title h1 {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .header-title p {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 1px;
+  .hero { text-align: center; padding: 28px 20px 0; }
+  .hero-badge {
+    display: inline-block; background: var(--red); color: #fff;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 5px 16px; border-radius: 20px;
   }
 
-  .boxes-left {
-    text-align: right;
-  }
-  .boxes-left .num {
-    font-size: 36px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    text-shadow: 0 0 15px rgba(255,215,0,0.5);
-  }
-  .boxes-left .label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  /* ── HERO ────────────────────────────────────────── */
-  .hero {
-    text-align: center;
-    padding: 40px 20px 20px;
-    position: relative;
-  }
-
-  .hero-subtitle {
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
-  }
-
-  /* ── COUNTDOWN ───────────────────────────────────── */
   .countdown-section {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    padding: 20px;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; align-items: center;
+    gap: 6px; padding: 20px 20px 8px; flex-wrap: wrap;
   }
-
   .countdown-label {
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    width: 100%;
-    margin-bottom: 8px;
+    text-align: center; font-size: 12px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.5px; width: 100%;
+    margin-bottom: 10px; font-weight: 600;
   }
-
   .countdown-block {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    padding: 12px 16px;
-    text-align: center;
-    min-width: 70px;
+    background: #fff; border: 1px solid var(--card-border);
+    border-radius: 10px; padding: 12px 18px; text-align: center;
+    min-width: 72px; box-shadow: var(--shadow);
   }
-
   .countdown-block .val {
-    font-size: 32px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    font-variant-numeric: tabular-nums;
-    transition: color 0.3s;
+    font-size: 30px; font-weight: 900; color: var(--dark);
+    line-height: 1; font-variant-numeric: tabular-nums; transition: color 0.3s;
   }
+  .countdown-block.urgent .val { color: var(--red); }
+  .countdown-block .unit { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+  .countdown-sep { font-size: 26px; font-weight: 900; color: var(--red); padding-bottom: 20px; }
+  .next-box-info { text-align: center; margin-top: 8px; font-size: 13px; color: var(--muted); }
+  .next-box-info strong { color: var(--dark); }
 
-  .countdown-block.urgent .val { color: #ff4444; }
-
-  .countdown-block .unit {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  .countdown-sep {
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--red);
-    align-self: center;
-    padding-bottom: 18px;
-  }
-
-  /* next box info */
-  .next-box-info {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.5px;
-  }
-  .next-box-info strong { color: var(--text); }
-
-  /* ── TODAY'S BOX FEATURE ─────────────────────────── */
-  .today-section {
-    max-width: 480px;
-    margin: 0 auto 40px;
-    padding: 0 20px;
-  }
-
-  .today-label {
-    text-align: center;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .today-box-wrap {
-    display: flex;
-    justify-content: center;
-  }
-
-  /* ── BOX CARDS GRID ─────────────────────────────── */
   .section-title {
-    text-align: center;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 30px 0 20px;
+    text-align: center; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--muted); margin: 28px 0 16px; font-weight: 600;
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 16px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    gap: 14px; max-width: 1100px; margin: 0 auto; padding: 0 20px 60px;
   }
 
-  /* ── BOX COMPONENT ───────────────────────────────── */
   .box-card {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: default;
-    transition: transform 0.2s;
+    position: relative; border-radius: 14px; overflow: hidden;
+    cursor: default; transition: transform 0.2s, box-shadow 0.2s;
   }
-
-  /* LOCKED */
   .box-card.locked {
-    background: var(--locked);
-    border: 1px solid #222235;
+    background: var(--locked-bg); border: 1px solid var(--card-border); box-shadow: var(--shadow);
   }
-
-  /* AVAILABLE */
   .box-card.available {
-    background: linear-gradient(145deg, #1f0a10, #2a0a14);
-    border: 1px solid var(--red);
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(232,25,44,0.25), 0 0 40px rgba(232,25,44,0.1);
-    animation: pulseAvail 2s ease-in-out infinite;
+    background: var(--red-light); border: 2px solid var(--red);
+    cursor: pointer; box-shadow: var(--shadow-hover);
+    animation: pulseCard 2.5s ease-in-out infinite;
   }
-
   .box-card.available:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 0 30px rgba(232,25,44,0.5), 0 8px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 32px rgba(232,25,44,0.25);
   }
-
-  /* OPENED */
   .box-card.opened {
-    background: linear-gradient(145deg, #0d1a0d, #0a1a10);
-    border: 1px solid #1a3d1a;
+    background: var(--green-bg); border: 1px solid #b8e0c8; box-shadow: var(--shadow);
   }
-
-  @keyframes pulseAvail {
-    0%, 100% { box-shadow: 0 0 20px rgba(232,25,44,0.25), 0 0 40px rgba(232,25,44,0.1); }
-    50% { box-shadow: 0 0 30px rgba(232,25,44,0.5), 0 0 60px rgba(232,25,44,0.2); }
+  @keyframes pulseCard {
+    0%,100% { box-shadow: 0 4px 20px rgba(232,25,44,0.15); }
+    50%      { box-shadow: 0 6px 28px rgba(232,25,44,0.32); }
   }
 
   .box-inner {
-    padding: 16px 14px;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    padding: 16px 14px; min-height: 188px; display: flex;
+    flex-direction: column; align-items: center; justify-content: space-between;
   }
-
-  .box-date {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: var(--muted);
-    width: 100%;
-    text-align: left;
-  }
-
+  .box-date { font-size: 11px; font-weight: 700; color: var(--muted); width: 100%; text-align: left; }
   .box-card.available .box-date { color: var(--red); }
-  .box-card.opened .box-date { color: #4a8a4a; }
+  .box-card.opened   .box-date { color: var(--green); }
+  .box-graphic { width: 78px; height: 78px; margin: 6px 0; }
+  .box-graphic svg { width: 100%; height: 100%; }
+  .box-card.available .box-graphic { animation: floatBox 3s ease-in-out infinite; }
+  @keyframes floatBox { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  .box-day-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
 
-  /* The actual box graphic */
-  .box-graphic {
-    width: 80px;
-    height: 80px;
-    position: relative;
-    margin: 8px 0;
-  }
-
-  .box-graphic svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Locked icon */
-  .lock-icon {
-    font-size: 28px;
-    opacity: 0.2;
-  }
-
-  .box-day-label {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-  }
-
-  /* Available box CTA */
   .open-cta {
-    background: var(--red);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 20px;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.15s;
+    background: var(--red); color: #fff; border: none; border-radius: 8px;
+    padding: 9px 20px; font-family: 'Exo 2', sans-serif; font-size: 12px;
+    font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    cursor: pointer; width: 100%; transition: background 0.15s, transform 0.1s;
   }
+  .open-cta:hover  { background: #c0111f; }
+  .open-cta:active { transform: scale(0.97); }
 
-  .open-cta:hover { background: #c0111f; }
+  .opened-content { text-align: center; width: 100%; }
+  .opened-discount { font-size: 34px; font-weight: 900; color: var(--green); line-height: 1; }
+  .opened-product  { font-size: 11px; color: var(--dark); margin-top: 5px; line-height: 1.4; }
 
-  /* Opened content */
-  .opened-content {
-    text-align: center;
-    width: 100%;
+  .shimmer {
+    position: absolute; inset: 0; border-radius: 14px;
+    background: linear-gradient(105deg, transparent 40%, rgba(232,25,44,0.06) 50%, transparent 60%);
+    background-size: 200% 100%; animation: shimmerMove 3s linear infinite; pointer-events: none;
   }
+  @keyframes shimmerMove { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-  .opened-discount {
-    font-size: 36px;
-    font-weight: 900;
-    color: #4dcc4d;
-    line-height: 1;
-  }
-
-  .opened-product {
-    font-size: 12px;
-    color: var(--text);
-    margin-top: 6px;
-    line-height: 1.4;
-  }
-
-  .opened-check {
-    font-size: 22px;
-    margin-bottom: 4px;
-  }
-
-  /* ── OPENING OVERLAY ANIMATION ───────────────────── */
   .overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: none; position: fixed; inset: 0;
+    background: rgba(10,10,20,0.6); backdrop-filter: blur(6px);
+    z-index: 1000; justify-content: center; align-items: center; padding: 20px;
   }
-
   .overlay.active { display: flex; }
 
-  .overlay-box {
-    position: relative;
-    animation: boxReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    text-align: center;
+  .overlay-card {
+    background: #fff; border-radius: 20px; padding: 36px 40px;
+    max-width: 460px; width: 100%; text-align: center; position: relative;
+    animation: cardPop 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  @keyframes cardPop {
+    0%   { transform: scale(0.5) translateY(40px); opacity: 0; }
+    100% { transform: scale(1)   translateY(0);    opacity: 1; }
   }
 
-  @keyframes boxReveal {
-    0% { transform: scale(0.3) rotate(-10deg); opacity: 0; }
-    100% { transform: scale(1) rotate(0deg); opacity: 1; }
-  }
-
-  .overlay-box-graphic {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 20px;
-  }
+  .overlay-box-graphic { width: 110px; height: 110px; margin: 0 auto 16px; animation: floatBox 3s ease-in-out infinite; }
 
   .overlay-shine {
-    position: absolute;
-    inset: -40px;
-    background: radial-gradient(ellipse at center,
-      rgba(255,215,0,0.3) 0%,
-      rgba(232,25,44,0.2) 30%,
-      transparent 70%);
-    animation: shineAnim 1.5s ease-out forwards;
-    pointer-events: none;
+    position: absolute; inset: -60px; border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(232,25,44,0.1) 0%, transparent 65%);
+    animation: shineAnim 1.2s ease-out forwards; pointer-events: none;
   }
-
-  @keyframes shineAnim {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.5); opacity: 1; }
-    100% { transform: scale(2); opacity: 0; }
-  }
-
-  .particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    animation: particleFly 1s ease-out forwards;
-  }
-
-  @keyframes particleFly {
-    0% { transform: translate(0,0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
-  }
+  @keyframes shineAnim { 0%{transform:scale(0);opacity:0} 50%{transform:scale(1.4);opacity:1} 100%{transform:scale(2);opacity:0} }
 
   .overlay-discount {
-    font-size: 80px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    text-shadow: 0 0 40px rgba(255,215,0,0.6);
-    animation: discountPop 0.4s 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    font-size: 72px; font-weight: 900; color: var(--red); line-height: 1;
+    animation: discountPop 0.4s 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
   }
-
-  @keyframes discountPop {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-  }
+  @keyframes discountPop { 0%{transform:scale(0.3);opacity:0} 100%{transform:scale(1);opacity:1} }
 
   .overlay-product-name {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    margin: 12px 0 6px;
-    animation: fadeUp 0.4s 0.7s ease both;
-    max-width: 400px;
-    line-height: 1.3;
+    font-size: 20px; font-weight: 700; color: var(--dark); margin: 10px 0 4px;
+    animation: fadeUp 0.3s 0.6s ease both; line-height: 1.3;
   }
-
   .overlay-skus {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 20px;
-    animation: fadeUp 0.4s 0.8s ease both;
+    font-size: 12px; color: var(--muted); margin-bottom: 16px;
+    animation: fadeUp 0.3s 0.7s ease both; line-height: 1.6;
   }
+  @keyframes fadeUp { 0%{transform:translateY(16px);opacity:0} 100%{transform:translateY(0);opacity:1} }
 
-  /* promo code block */
   .promo-block {
-    background: linear-gradient(135deg, #1a1a0a, #252510);
-    border: 1px solid var(--gold);
-    border-radius: 10px;
-    padding: 14px 28px;
-    margin: 12px 0 16px;
-    animation: fadeUp 0.4s 0.85s ease both;
-    text-align: center;
+    background: #fffbf0; border: 1.5px dashed #f0a500;
+    border-radius: 12px; padding: 14px 24px; margin: 0 0 14px;
+    animation: fadeUp 0.3s 0.75s ease both;
   }
-  .promo-label {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-  }
-  .promo-code {
-    font-size: 38px;
-    font-weight: 900;
-    color: var(--gold);
-    letter-spacing: 8px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.5);
-    cursor: pointer;
-    user-select: all;
-  }
-  .promo-hint {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 5px;
-  }
-  .promo-copied {
-    font-size: 11px;
-    color: #4dcc4d;
-    margin-top: 3px;
-    height: 14px;
-  }
+  .promo-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 600; }
+  .promo-code  { font-size: 36px; font-weight: 900; color: #c47a00; letter-spacing: 8px; cursor: pointer; user-select: all; transition: color 0.15s; }
+  .promo-code:hover { color: var(--red); }
+  .promo-hint   { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .promo-copied { font-size: 11px; color: var(--green); height: 14px; margin-top: 2px; }
 
   .overlay-valid {
-    font-size: 13px;
-    color: var(--red);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    animation: fadeUp 0.4s 0.9s ease both;
+    font-size: 12px; color: var(--red); font-weight: 600;
+    margin-bottom: 4px; animation: fadeUp 0.3s 0.85s ease both;
   }
-
   .overlay-next-box {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 22px;
-    animation: fadeUp 0.4s 0.95s ease both;
+    font-size: 12px; color: var(--muted); margin-bottom: 20px;
+    animation: fadeUp 0.3s 0.9s ease both;
   }
-  .overlay-next-box strong { color: var(--text); }
-
-  @keyframes fadeUp {
-    0% { transform: translateY(20px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-  }
+  .overlay-next-box strong { color: var(--dark); }
 
   .overlay-close {
-    background: transparent;
-    border: 1px solid var(--card-border);
-    color: var(--muted);
-    padding: 10px 30px;
-    border-radius: 6px;
-    font-family: 'Exo 2', sans-serif;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-    animation: fadeUp 0.4s 1s ease both;
+    background: transparent; border: 1.5px solid var(--card-border);
+    color: var(--muted); padding: 9px 28px; border-radius: 8px;
+    font-family: 'Exo 2', sans-serif; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s; animation: fadeUp 0.3s 0.95s ease both;
   }
-
   .overlay-close:hover { border-color: var(--red); color: var(--red); }
 
-  /* ── PARTICLES canvas ────────────────────────────── */
-  #particleCanvas {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999;
-    display: none;
-  }
+  #particleCanvas { position: fixed; inset: 0; pointer-events: none; z-index: 999; display: none; }
 
-  /* ── FOOTER ──────────────────────────────────────── */
   .footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid var(--card-border);
-    font-size: 12px;
-    color: var(--muted);
+    text-align: center; padding: 24px; border-top: 1px solid var(--card-border);
+    font-size: 12px; color: var(--muted); background: #fff;
   }
-
-  /* BOX SVG box styling by state */
-  .box-svg-locked .box-body { fill: #1e1e30; stroke: #2a2a40; }
-  .box-svg-locked .box-lid  { fill: #252538; stroke: #2a2a40; }
-  .box-svg-locked .box-ribbon { fill: #2a2a40; }
-  .box-svg-locked .box-lock { fill: #3a3a55; }
-
-  .box-svg-available .box-body { fill: #3d0810; stroke: var(--red); }
-  .box-svg-available .box-lid  { fill: #5a0e18; stroke: var(--red); }
-  .box-svg-available .box-ribbon { fill: var(--gold); }
-  .box-svg-available .box-bow { fill: var(--gold2); }
-
-  .box-svg-opened .box-body { fill: #0d250d; stroke: #2a5a2a; }
-  .box-svg-opened .box-lid  { fill: #122012; stroke: #2a5a2a; transform-origin: center; transform: translateY(-10px) rotate(-20deg); opacity: 0.5; }
-  .box-svg-opened .box-ribbon { fill: #2a8a2a; }
-  .box-svg-opened .box-check { fill: #4dcc4d; }
-
-  .box-card.available .box-graphic {
-    animation: boxFloat 3s ease-in-out infinite;
-  }
-  @keyframes boxFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-
-  /* Shimmer on available box */
-  .shimmer {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg,
-      transparent 40%,
-      rgba(255,255,255,0.06) 50%,
-      transparent 60%);
-    background-size: 200% 100%;
-    animation: shimmerMove 3s linear infinite;
-    pointer-events: none;
-    border-radius: 12px;
-  }
-  @keyframes shimmerMove {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-  }
+  .footer a { color: var(--red); text-decoration: none; }
 </style>
 </head>
 <body>
 
-<!-- PARTICLE CANVAS -->
 <canvas id="particleCanvas"></canvas>
 
-<!-- HEADER -->
 <div class="header">
-  <div class="logo">LU<span>X</span>EL</div>
+  <div class="logo">LU<span>X</span>EL<sub>®</sub></div>
   <div class="header-title">
-    <h1>🎁 Калейдоскоп скидок</h1>
-    <p>Июнь 2026 · Каждый рабочий день — новая коробка</p>
+    <h1>🎁 Калейдоскоп знижок</h1>
+    <p>Червень 2026 · Кожен робочий день — нова коробка</p>
   </div>
   <div class="boxes-left">
     <div class="num" id="boxesLeftNum">—</div>
-    <div class="label">коробок осталось</div>
+    <div class="label">коробок залишилось</div>
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="hero-subtitle">⚡ Только для дистрибуторов Luxel</div>
+  <div class="hero-badge">⚡ Тільки для дистриб'юторів Luxel</div>
 </div>
 
-<!-- COUNTDOWN -->
 <div class="countdown-section">
-  <div class="countdown-label" id="countdownLabel">До следующей коробки</div>
-  <div class="countdown-block" id="cdBlockH"><div class="val" id="cdH">00</div><div class="unit">часов</div></div>
+  <div class="countdown-label" id="countdownLabel">До наступної коробки</div>
+  <div class="countdown-block" id="cdBlockH"><div class="val" id="cdH">--</div><div class="unit">годин</div></div>
   <div class="countdown-sep">:</div>
-  <div class="countdown-block" id="cdBlockM"><div class="val" id="cdM">00</div><div class="unit">минут</div></div>
+  <div class="countdown-block" id="cdBlockM"><div class="val" id="cdM">--</div><div class="unit">хвилин</div></div>
   <div class="countdown-sep">:</div>
-  <div class="countdown-block" id="cdBlockS"><div class="val" id="cdS">00</div><div class="unit">секунд</div></div>
+  <div class="countdown-block" id="cdBlockS"><div class="val" id="cdS">--</div><div class="unit">секунд</div></div>
 </div>
 <div class="next-box-info" id="nextBoxInfo"></div>
 
-<!-- GRID -->
-<div class="section-title">— Все коробки июня —</div>
+<div class="section-title">— Усі коробки червня —</div>
 <div class="grid" id="boxGrid"></div>
 
-<!-- OPENING OVERLAY -->
 <div class="overlay" id="overlay">
-  <div class="overlay-box" id="overlayBox">
+  <div class="overlay-card">
     <div class="overlay-shine"></div>
     <div class="overlay-box-graphic">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <!-- body -->
-        <rect x="10" y="45" width="80" height="50" rx="4" fill="#5a0e18" stroke="#E8192C" stroke-width="1.5"/>
-        <!-- ribbon vertical -->
-        <rect x="46" y="45" width="8" height="50" fill="#FFD700" opacity="0.9"/>
-        <!-- ribbon horizontal -->
-        <rect x="10" y="60" width="80" height="8" fill="#FFD700" opacity="0.9"/>
-        <!-- lid -->
-        <rect x="6" y="30" width="88" height="20" rx="4" fill="#7a1020" stroke="#E8192C" stroke-width="1.5"/>
-        <rect x="42" y="30" width="16" height="20" fill="#FFD700" opacity="0.9"/>
-        <!-- bow left -->
-        <ellipse cx="38" cy="30" rx="14" ry="9" fill="#FFA500" transform="rotate(-20,38,30)" opacity="0.9"/>
-        <ellipse cx="38" cy="30" rx="10" ry="6" fill="#FFD700" transform="rotate(-20,38,30)" opacity="0.7"/>
-        <!-- bow right -->
-        <ellipse cx="62" cy="30" rx="14" ry="9" fill="#FFA500" transform="rotate(20,62,30)" opacity="0.9"/>
-        <ellipse cx="62" cy="30" rx="10" ry="6" fill="#FFD700" transform="rotate(20,62,30)" opacity="0.7"/>
-        <!-- bow center -->
-        <circle cx="50" cy="30" r="6" fill="#E8192C"/>
-        <circle cx="50" cy="30" r="3" fill="#FFD700"/>
+        <rect x="10" y="45" width="80" height="50" rx="4" fill="#fff0f1" stroke="#E8192C" stroke-width="2"/>
+        <rect x="46" y="45" width="8" height="50" fill="#E8192C" opacity="0.8"/>
+        <rect x="10" y="60" width="80" height="8" fill="#E8192C" opacity="0.8"/>
+        <rect x="6" y="30" width="88" height="20" rx="4" fill="#fff5f5" stroke="#E8192C" stroke-width="2"/>
+        <rect x="46" y="30" width="8" height="20" fill="#E8192C" opacity="0.8"/>
+        <ellipse cx="37" cy="30" rx="13" ry="8" fill="#ffb3bb" transform="rotate(-20,37,30)"/>
+        <ellipse cx="63" cy="30" rx="13" ry="8" fill="#ffb3bb" transform="rotate(20,63,30)"/>
+        <circle cx="50" cy="30" r="7" fill="#E8192C"/>
+        <circle cx="50" cy="30" r="3.5" fill="#fff"/>
       </svg>
     </div>
     <div class="overlay-discount" id="overlayDiscount">-15%</div>
     <div class="overlay-product-name" id="overlayProduct">Товар дня</div>
     <div class="overlay-skus" id="overlaySkus"></div>
     <div class="promo-block">
-      <div class="promo-label">Промокод — укажи в комментарии к заказу</div>
+      <div class="promo-label">Промокод — вкажи у коментарі до замовлення</div>
       <div class="promo-code" id="overlayPromo" onclick="copyPromo()">XXXX</div>
-      <div class="promo-hint">Нажми чтобы скопировать</div>
+      <div class="promo-hint">Натисни щоб скопіювати</div>
       <div class="promo-copied" id="promoCopied"></div>
     </div>
-    <div class="overlay-valid" id="overlayValid">⏱ До конца акции осталось: <span id="overlayCountdown">90:00</span></div>
+    <div class="overlay-valid">⏱ До кінця акції: <span id="overlayCountdown">90:00</span></div>
     <div class="overlay-next-box" id="overlayNextBox"></div>
-    <button class="overlay-close" onclick="closeOverlay()">Закрыть</button>
+    <button class="overlay-close" onclick="closeOverlay()">Закрити</button>
   </div>
 </div>
 
 <div class="footer">
-  LUXEL Electrical Technology · Все скидки действуют в день публикации · Оформить заказ можно позже
+  LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Усі знижки діють у день публікації · Оформити замовлення можна пізніше
 </div>
 
 <script>
-// ── SCHEDULE DATA ────────────────────────────────────────
-const PROMO_WINDOW_MIN = 90; // минут с 9:00
+const PROMO_WINDOW_MIN = 90;
 
 const SCHEDULE = [
-  { date:"2026-06-03", day:"Ср", group:"Лампы А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",               discount:15, promo:"A60X" },
-  { date:"2026-06-04", day:"Чт", group:"OPERA белый",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся белая серия",        discount:15, promo:"OPRA" },
-  { date:"2026-06-05", day:"Пт", group:"JAZZ белый",            skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",                   discount:15, promo:"JAZZ" },
-  { date:"2026-06-09", day:"Пн", group:"Лампы C37 / C35",       skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                        discount:15, promo:"C37K" },
-  { date:"2026-06-10", day:"Вт", group:"OPERA чёрный",          skus:"2101 · 2102 · 2104 · 2107 · 2108",                          discount:20, promo:"OPBK" },
-  { date:"2026-06-11", day:"Ср", group:"Лампы G45",             skus:"053-NE · 056-NE · 057-NE · 058-NE",                         discount:20, promo:"G45L" },
-  { date:"2026-06-12", day:"Чт", group:"JAZZ графит + чёрный",  skus:"9101Р · 9102Р · 9107Р · 9701Р · 9702Р · 9707Р — все",      discount:15, promo:"JZGR" },
-  { date:"2026-06-13", day:"Пт", group:"BSR / BSO",             skus:"BSR-12N/C · BSR-20N/C · BSO-12N/C · BSO-20N/C · BSRS",     discount:20, promo:"BSRX" },
-  { date:"2026-06-16", day:"Пн", group:"Лампы T8",              skus:"T8-0.6-10w · T8-1.2-18w · все модели без порога",           discount:12, promo:"T8XX" },
-  { date:"2026-06-17", day:"Вт", group:"PRIMERA белый",         skus:"3001 · 3002 · 3003 · 3004 · 3007 · 3008 + серия",           discount:10, promo:"PR1M" },
-  { date:"2026-06-18", day:"Ср", group:"Лампы MR16",            skus:"010-NE · 012-NE · 014-NE · все GU5.3",                      discount:15, promo:"MR16" },
-  { date:"2026-06-19", day:"Чт", group:"LX3012 линейные",       skus:"LX3012-0.6-18 · LX3012-1.2-36 · LX3012-1.5-45",            discount:10, promo:"LX30" },
-  { date:"2026-06-20", day:"Пт", group:"OPERA цветные",         skus:"Сосна · Вишня · Крем — вся палитра",                        discount:20, promo:"OPRC" },
-  { date:"2026-06-23", day:"Пн", group:"Лампы А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",      discount:20, promo:"A6X2" },
-  { date:"2026-06-24", day:"Вт", group:"JAZZ цветные",          skus:"Терракот · Бронза · Крем — вся палитра",                    discount:20, promo:"JZCL" },
-  { date:"2026-06-25", day:"Ср", group:"Лампы C37",             skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                        discount:20, promo:"C37X" },
-  { date:"2026-06-26", day:"Чт", group:"Двойники / переходники",skus:"1016 · 1036 · 1024 · аналоги",                              discount:20, promo:"DV2K" },
-  { date:"2026-06-27", day:"Пт", group:"OPERA белый",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся белая серия",        discount:20, promo:"OP27" },
-  { date:"2026-06-30", day:"Пн", group:"BSR / BSO",             skus:"Все модели BSR · BSO · BSRS",                               discount:20, promo:"BSRZ" },
+  {date:"2026-06-03",day:"Ср",group:"Лампи А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",              discount:15,promo:"A60X"},
+  {date:"2026-06-04",day:"Чт",group:"OPERA білий",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся біла серія",        discount:15,promo:"OPRA"},
+  {date:"2026-06-05",day:"Пт",group:"JAZZ білий",            skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",                  discount:15,promo:"JAZZ"},
+  {date:"2026-06-09",day:"Пн",group:"Лампи C37 / C35",       skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                       discount:15,promo:"C37K"},
+  {date:"2026-06-10",day:"Вт",group:"OPERA чорний",          skus:"2101 · 2102 · 2104 · 2107 · 2108",                         discount:20,promo:"OPBK"},
+  {date:"2026-06-11",day:"Ср",group:"Лампи G45",             skus:"053-NE · 056-NE · 057-NE · 058-NE",                        discount:20,promo:"G45L"},
+  {date:"2026-06-12",day:"Чт",group:"JAZZ графіт + чорний",  skus:"9101Р · 9102Р · 9107Р · 9701Р · 9702Р · 9707Р — усі",     discount:15,promo:"JZGR"},
+  {date:"2026-06-13",day:"Пт",group:"BSR / BSO",             skus:"BSR-12N/C · BSR-20N/C · BSO-12N/C · BSO-20N/C · BSRS",    discount:20,promo:"BSRX"},
+  {date:"2026-06-16",day:"Пн",group:"Лампи T8",              skus:"T8-0.6-10w · T8-1.2-18w · усі моделі без порогу",         discount:12,promo:"T8XX"},
+  {date:"2026-06-17",day:"Вт",group:"PRIMERA білий",         skus:"3001 · 3002 · 3003 · 3004 · 3007 · 3008 + серія",          discount:10,promo:"PR1M"},
+  {date:"2026-06-18",day:"Ср",group:"Лампи MR16",            skus:"010-NE · 012-NE · 014-NE · усі GU5.3",                     discount:15,promo:"MR16"},
+  {date:"2026-06-19",day:"Чт",group:"LX3012 лінійні",        skus:"LX3012-0.6-18 · LX3012-1.2-36 · LX3012-1.5-45",           discount:10,promo:"LX30"},
+  {date:"2026-06-20",day:"Пт",group:"OPERA кольорові",       skus:"Сосна · Вишня · Крем — вся палітра",                       discount:20,promo:"OPRC"},
+  {date:"2026-06-23",day:"Пн",group:"Лампи А60",             skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",     discount:20,promo:"A6X2"},
+  {date:"2026-06-24",day:"Вт",group:"JAZZ кольорові",        skus:"Теракота · Бронза · Крем — вся палітра",                   discount:20,promo:"JZCL"},
+  {date:"2026-06-25",day:"Ср",group:"Лампи C37",             skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                       discount:20,promo:"C37X"},
+  {date:"2026-06-26",day:"Чт",group:"Двійники / перехідники",skus:"1016 · 1036 · 1024 · аналоги",                             discount:20,promo:"DV2K"},
+  {date:"2026-06-27",day:"Пт",group:"OPERA білий",           skus:"2001 · 2002 · 2004 · 2007 · 2008 + вся біла серія",        discount:20,promo:"OP27"},
+  {date:"2026-06-30",day:"Пн",group:"BSR / BSO",             skus:"Усі моделі BSR · BSO · BSRS",                              discount:20,promo:"BSRZ"},
 ];
 
-// ── HELPERS ───────────────────────────────────────────────
-function todayStr() {
-  const d = new Date();
-  return d.toISOString().slice(0,10);
-}
+function todayStr(){return new Date().toISOString().slice(0,10);}
+function pad(n){return String(n).padStart(2,'0');}
+function getState(item){const t=todayStr();return item.date<t?'opened':item.date===t?'available':'locked';}
+function boxesRemaining(){const t=todayStr();return SCHEDULE.filter(s=>s.date>=t).length;}
 
-function pad(n) { return String(n).padStart(2,'0'); }
-
-function getState(item) {
-  const today = todayStr();
-  if (item.date < today) return 'opened';
-  if (item.date === today) return 'available';
-  return 'locked';
-}
-
-function boxesRemaining() {
-  const today = todayStr();
-  return SCHEDULE.filter(s => s.date >= today).length;
-}
-
-// ── BOX SVG ───────────────────────────────────────────────
-function boxSVG(state) {
-  const colors = {
-    locked:    { body:'#1e1e30', lid:'#252538', ribbon:'#2a2a40', bow:'#333350', stroke:'#2a2a40' },
-    available: { body:'#3d0810', lid:'#5a0e18', ribbon:'#FFD700', bow:'#FFA500', stroke:'#E8192C' },
-    opened:    { body:'#0d250d', lid:'#122012', ribbon:'#2a8a2a', bow:'#1a6a1a', stroke:'#2a5a2a' },
-  }[state];
-
-  const lidTransform = state === 'opened' ? 'transform="translate(0,-12) rotate(-15,50,35)"' : '';
-  const lidOpacity   = state === 'opened' ? 'opacity="0.6"' : '';
-
-  const extra = state === 'opened'
-    ? `<path d="M35,70 L50,55 L65,70" stroke="#4dcc4d" stroke-width="4" stroke-linecap="round" fill="none"/>
-       <path d="M40,63 L49,72 L65,52" stroke="#4dcc4d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
-    : state === 'locked'
-    ? `<rect x="41" y="55" width="18" height="13" rx="2" fill="#3a3a55"/>
-       <path d="M44,55 Q44,47 50,47 Q56,47 56,55" stroke="#3a3a55" stroke-width="3.5" fill="none" stroke-linecap="round"/>`
-    : '';
-
+function boxSVG(state){
+  if(state==='locked') return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="12" y="47" width="76" height="46" rx="4" fill="#eef0f5" stroke="#d0d4e0" stroke-width="1.5"/>
+    <rect x="8" y="33" width="84" height="18" rx="3" fill="#e8eaf0" stroke="#d0d4e0" stroke-width="1.5"/>
+    <rect x="44" y="33" width="12" height="50" fill="#d0d4e0" opacity="0.5"/>
+    <rect x="8" y="59" width="84" height="8" fill="#d0d4e0" opacity="0.4"/>
+    <rect x="37" y="52" width="26" height="18" rx="3" fill="#c8ccd8"/>
+    <path d="M41,52 Q41,43 50,43 Q59,43 59,52" stroke="#b0b4c4" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <circle cx="50" cy="61" r="4" fill="#a8acbc"/></svg>`;
+  if(state==='available') return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect x="12" y="47" width="76" height="46" rx="4" fill="#fff0f1" stroke="#E8192C" stroke-width="2"/>
+    <rect x="46" y="47" width="8" height="46" fill="#E8192C" opacity="0.75"/>
+    <rect x="12" y="61" width="76" height="7" fill="#E8192C" opacity="0.75"/>
+    <rect x="8" y="33" width="84" height="18" rx="3" fill="#fff5f5" stroke="#E8192C" stroke-width="2"/>
+    <rect x="46" y="33" width="8" height="18" fill="#E8192C" opacity="0.75"/>
+    <ellipse cx="37" cy="33" rx="13" ry="8" fill="#ffb3bb" transform="rotate(-20,37,33)"/>
+    <ellipse cx="63" cy="33" rx="13" ry="8" fill="#ffb3bb" transform="rotate(20,63,33)"/>
+    <circle cx="50" cy="33" r="7" fill="#E8192C"/>
+    <circle cx="50" cy="33" r="3.5" fill="#fff"/></svg>`;
   return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <rect x="12" y="47" width="76" height="46" rx="4" fill="${colors.body}" stroke="${colors.stroke}" stroke-width="1.5"/>
-    <rect x="47" y="47" width="6" height="46" fill="${colors.ribbon}" opacity="0.85"/>
-    <rect x="12" y="62" width="76" height="6" fill="${colors.ribbon}" opacity="0.85"/>
-    <rect x="8" y="33" width="84" height="18" rx="3" fill="${colors.lid}" stroke="${colors.stroke}" stroke-width="1.5" ${lidTransform} ${lidOpacity}/>
-    <rect x="47" y="33" width="6" height="18" fill="${colors.ribbon}" opacity="0.85" ${lidTransform} ${lidOpacity}/>
-    <ellipse cx="36" cy="33" rx="13" ry="8" fill="${colors.bow}" transform="rotate(-20,36,33)" opacity="0.9"/>
-    <ellipse cx="64" cy="33" rx="13" ry="8" fill="${colors.bow}" transform="rotate(20,64,33)" opacity="0.9"/>
-    <circle cx="50" cy="33" r="6" fill="${colors.stroke}"/>
-    <circle cx="50" cy="33" r="3" fill="${colors.ribbon}" opacity="0.8"/>
-    ${extra}
-  </svg>`;
+    <rect x="12" y="47" width="76" height="46" rx="4" fill="#f0faf4" stroke="#1a8a3a" stroke-width="1.5"/>
+    <rect x="12" y="61" width="76" height="7" fill="#1a8a3a" opacity="0.25"/>
+    <rect x="8" y="33" width="84" height="18" rx="3" fill="#e0f5e8" stroke="#1a8a3a" stroke-width="1.5" transform="translate(0,-8) rotate(-10,50,42)" opacity="0.5"/>
+    <path d="M36,65 L46,75 L66,50" stroke="#1a8a3a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
 }
 
-// ── RENDER GRID ───────────────────────────────────────────
-function renderGrid() {
-  const grid = document.getElementById('boxGrid');
-  grid.innerHTML = '';
-
-  SCHEDULE.forEach((item, i) => {
-    const state = getState(item);
-    const card = document.createElement('div');
-    card.className = `box-card ${state}`;
-    card.dataset.index = i;
-
-    const dateLabel = item.date.slice(8) + '.' + item.date.slice(5,7);
-
-    let inner = '';
-
-    if (state === 'locked') {
-      inner = `
-        <div class="box-inner">
-          <div class="box-date">${dateLabel} ${item.day}</div>
-          <div class="box-graphic">${boxSVG('locked')}</div>
-          <div class="box-day-label">Закрыто</div>
-        </div>`;
-    } else if (state === 'available') {
-      inner = `
-        <div class="shimmer"></div>
-        <div class="box-inner">
-          <div class="box-date">🔴 ${dateLabel} ${item.day} — СЕГОДНЯ</div>
-          <div class="box-graphic">${boxSVG('available')}</div>
-          <button class="open-cta" onclick="openBox(${i})">Открыть коробку</button>
-        </div>`;
-    } else {
-      inner = `
-        <div class="box-inner">
-          <div class="box-date">✓ ${dateLabel} ${item.day}</div>
-          <div class="box-graphic">${boxSVG('opened')}</div>
-          <div class="opened-content">
-            <div class="opened-discount">-${item.discount}%</div>
-            <div class="opened-product" style="font-size:11px;margin-top:4px;">${item.group}</div>
-          </div>
-        </div>`;
+function renderGrid(){
+  const grid=document.getElementById('boxGrid');
+  grid.innerHTML='';
+  SCHEDULE.forEach((item,i)=>{
+    const state=getState(item);
+    const card=document.createElement('div');
+    card.className=`box-card ${state}`;
+    const d=item.date.slice(8)+'.'+item.date.slice(5,7);
+    let inner='';
+    if(state==='locked'){
+      inner=`<div class="box-inner"><div class="box-date">${d} ${item.day}</div><div class="box-graphic">${boxSVG('locked')}</div><div class="box-day-label">Закрито</div></div>`;
+    }else if(state==='available'){
+      inner=`<div class="shimmer"></div><div class="box-inner"><div class="box-date">🔴 ${d} ${item.day} — СЬОГОДНІ</div><div class="box-graphic">${boxSVG('available')}</div><button class="open-cta" onclick="openBox(${i})">Відкрити коробку</button></div>`;
+    }else{
+      inner=`<div class="box-inner"><div class="box-date">✓ ${d} ${item.day}</div><div class="box-graphic">${boxSVG('opened')}</div><div class="opened-content"><div class="opened-discount">-${item.discount}%</div><div class="opened-product">${item.group}</div></div></div>`;
     }
-
-    card.innerHTML = inner;
+    card.innerHTML=inner;
     grid.appendChild(card);
   });
-
-  // Update counter
-  document.getElementById('boxesLeftNum').textContent = boxesRemaining();
+  document.getElementById('boxesLeftNum').textContent=boxesRemaining();
 }
 
-// ── PROMO COPY ────────────────────────────────────────────
-function copyPromo() {
-  const code = document.getElementById('overlayPromo').textContent;
-  navigator.clipboard.writeText(code).then(() => {
-    const el = document.getElementById('promoCopied');
-    el.textContent = '✓ Скопировано!';
-    setTimeout(() => { el.textContent = ''; }, 2000);
+function copyPromo(){
+  const code=document.getElementById('overlayPromo').textContent;
+  navigator.clipboard.writeText(code).then(()=>{
+    const el=document.getElementById('promoCopied');
+    el.textContent='✓ Скопійовано!';
+    setTimeout(()=>{el.textContent='';},2000);
   });
 }
 
-// ── OVERLAY COUNTDOWN (90 min from 9:00) ─────────────────
-let overlayTimer = null;
-
-function startOverlayCountdown() {
+let overlayTimer=null;
+function startOverlayCountdown(){
   clearInterval(overlayTimer);
-  const today = todayStr();
-  const deadline = new Date(today + 'T09:00:00');
-  deadline.setMinutes(deadline.getMinutes() + PROMO_WINDOW_MIN);
-
-  function tick() {
-    const now = new Date();
-    const diff = deadline - now;
-    const el = document.getElementById('overlayCountdown');
-    if (!el) return;
-    if (diff <= 0) {
-      el.textContent = 'время истекло';
-      clearInterval(overlayTimer);
-      return;
-    }
-    const m = Math.floor(diff / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    el.textContent = `${pad(m)}:${pad(s)}`;
-    // Turn red in last 15 min
-    el.style.color = diff < 900000 ? '#ff4444' : '#E8192C';
+  const deadline=new Date(todayStr()+'T09:00:00');
+  deadline.setMinutes(deadline.getMinutes()+PROMO_WINDOW_MIN);
+  function tick(){
+    const diff=deadline-new Date();
+    const el=document.getElementById('overlayCountdown');
+    if(!el)return;
+    if(diff<=0){el.textContent='час минув';clearInterval(overlayTimer);return;}
+    const m=Math.floor(diff/60000),s=Math.floor((diff%60000)/1000);
+    el.textContent=`${pad(m)}:${pad(s)}`;
+    el.style.color=diff<900000?'#c0111f':'#E8192C';
   }
-  tick();
-  overlayTimer = setInterval(tick, 1000);
+  tick();overlayTimer=setInterval(tick,1000);
 }
 
-// ── OPEN BOX ──────────────────────────────────────────────
-function openBox(index) {
-  const item = SCHEDULE[index];
-
-  document.getElementById('overlayDiscount').textContent = `-${item.discount}%`;
-  document.getElementById('overlayProduct').textContent  = item.group;
-  document.getElementById('overlaySkus').textContent     = item.skus;
-  document.getElementById('overlayPromo').textContent    = item.promo;
-  document.getElementById('promoCopied').textContent     = '';
-
-  // Next box info
-  const nextItem = SCHEDULE.find(s => s.date > item.date);
-  const nextEl = document.getElementById('overlayNextBox');
-  if (nextItem) {
-    const d = nextItem.date;
-    const label = d.slice(8) + '.' + d.slice(5,7);
-    nextEl.innerHTML = `📦 Следующая коробка: <strong>${label} (${nextItem.day}) в 9:00</strong>`;
-  } else {
-    nextEl.textContent = '🏁 Это последняя коробка июня!';
-  }
-
+function openBox(i){
+  const item=SCHEDULE[i];
+  document.getElementById('overlayDiscount').textContent=`-${item.discount}%`;
+  document.getElementById('overlayProduct').textContent=item.group;
+  document.getElementById('overlaySkus').textContent=item.skus;
+  document.getElementById('overlayPromo').textContent=item.promo;
+  document.getElementById('promoCopied').textContent='';
+  const next=SCHEDULE.find(s=>s.date>item.date);
+  const nextEl=document.getElementById('overlayNextBox');
+  if(next){const nd=next.date.slice(8)+'.'+next.date.slice(5,7);nextEl.innerHTML=`📦 Наступна коробка: <strong>${nd} (${next.day}) о 9:00</strong>`;}
+  else{nextEl.textContent='🏁 Це остання коробка червня!';}
   document.getElementById('overlay').classList.add('active');
   startOverlayCountdown();
   spawnParticles();
 }
 
-function closeOverlay() {
+function closeOverlay(){
   document.getElementById('overlay').classList.remove('active');
   clearInterval(overlayTimer);
   stopParticles();
 }
 
-// ── PARTICLE EFFECT ───────────────────────────────────────
-let particleAnim = null;
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
+document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeOverlay();});
 
-function spawnParticles() {
-  canvas.style.display = 'block';
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
-  particles = [];
+function setUrgent(on){['cdBlockH','cdBlockM','cdBlockS'].forEach(id=>document.getElementById(id).classList.toggle('urgent',on));}
 
-  const colors = ['#FFD700','#E8192C','#FFA500','#fff','#4dcc4d','#FF6B6B'];
-  const cx = canvas.width / 2, cy = canvas.height / 2;
-
-  for (let i = 0; i < 80; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const speed = 4 + Math.random() * 8;
-    particles.push({
-      x: cx, y: cy,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed - 3,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      size: 4 + Math.random() * 5,
-      life: 1.0,
-      decay: 0.015 + Math.random() * 0.02,
-      gravity: 0.25,
-    });
+function updateCountdown(){
+  const today=todayStr(),now=new Date();
+  const todayItem=SCHEDULE.find(s=>s.date===today);
+  if(todayItem){
+    const deadline=new Date(today+'T09:00:00');
+    deadline.setMinutes(deadline.getMinutes()+PROMO_WINDOW_MIN);
+    const diff=deadline-now;
+    if(diff<=0){
+      document.getElementById('countdownLabel').textContent='✅ Акція сьогодні завершена · Відкрий коробку щоб дізнатись промокод';
+      ['cdH','cdM','cdS'].forEach(id=>document.getElementById(id).textContent='00');
+      document.getElementById('nextBoxInfo').innerHTML=nextBoxLine(today);
+      setUrgent(false);return;
+    }
+    const isUrgent=diff<15*60*1000;
+    document.getElementById('countdownLabel').textContent=isUrgent?'🔥 Поспішай! Акція закінчується':'⏱ До кінця акції залишилось';
+    document.getElementById('cdH').textContent=pad(Math.floor(diff/3600000));
+    document.getElementById('cdM').textContent=pad(Math.floor((diff%3600000)/60000));
+    document.getElementById('cdS').textContent=pad(Math.floor((diff%60000)/1000));
+    document.getElementById('nextBoxInfo').innerHTML=nextBoxLine(today);
+    setUrgent(isUrgent);return;
   }
+  setUrgent(false);
+  const next=SCHEDULE.find(s=>s.date>today);
+  if(!next){
+    document.getElementById('countdownLabel').textContent='Усі коробки відкрито. До зустрічі у липні! 🎉';
+    ['cdH','cdM','cdS'].forEach(id=>document.getElementById(id).textContent='--');
+    document.getElementById('nextBoxInfo').textContent='';return;
+  }
+  const nextDate=new Date(next.date+'T09:00:00'),diff=nextDate-now;
+  if(diff<=0){renderGrid();return;}
+  const d=next.date.slice(8)+'.'+next.date.slice(5,7);
+  document.getElementById('countdownLabel').textContent=`До наступної коробки · ${d} ${next.day} · ${next.group}`;
+  document.getElementById('cdH').textContent=pad(Math.floor(diff/3600000));
+  document.getElementById('cdM').textContent=pad(Math.floor((diff%3600000)/60000));
+  document.getElementById('cdS').textContent=pad(Math.floor((diff%60000)/1000));
+  document.getElementById('nextBoxInfo').innerHTML=`📦 Наступна коробка відкриється <strong>${d} (${next.day}) о 9:00</strong>`;
+}
 
-  if (particleAnim) cancelAnimationFrame(particleAnim);
+function nextBoxLine(currentDate){
+  const next=SCHEDULE.find(s=>s.date>currentDate);
+  if(!next)return'';
+  const d=next.date.slice(8)+'.'+next.date.slice(5,7);
+  return`📦 Наступна коробка: <strong>${d} (${next.day}) о 9:00</strong>`;
+}
+
+let particleAnim=null;
+const canvas=document.getElementById('particleCanvas'),ctx=canvas.getContext('2d');
+let particles=[];
+function spawnParticles(){
+  canvas.style.display='block';canvas.width=window.innerWidth;canvas.height=window.innerHeight;particles=[];
+  const colors=['#E8192C','#ff6b7a','#ffb3bb','#ffffff','#f0a500','#1a8a3a'];
+  const cx=canvas.width/2,cy=canvas.height/2;
+  for(let i=0;i<70;i++){
+    const angle=Math.random()*Math.PI*2,speed=4+Math.random()*8;
+    particles.push({x:cx,y:cy,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed-3,
+      color:colors[Math.floor(Math.random()*colors.length)],size:4+Math.random()*5,
+      life:1,decay:0.016+Math.random()*0.02,gravity:0.25});
+  }
+  if(particleAnim)cancelAnimationFrame(particleAnim);
   animateParticles();
 }
-
-function animateParticles() {
+function animateParticles(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy; p.vy += p.gravity; p.life -= p.decay;
-    ctx.globalAlpha = Math.max(0, p.life);
-    ctx.fillStyle = p.color;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-    ctx.fill();
-  });
-  ctx.globalAlpha = 1;
-  particles = particles.filter(p => p.life > 0);
-  if (particles.length > 0) particleAnim = requestAnimationFrame(animateParticles);
-  else stopParticles();
+  particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.gravity;p.life-=p.decay;
+    ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fill();});
+  ctx.globalAlpha=1;particles=particles.filter(p=>p.life>0);
+  if(particles.length)particleAnim=requestAnimationFrame(animateParticles);else stopParticles();
+}
+function stopParticles(){
+  if(particleAnim)cancelAnimationFrame(particleAnim);
+  ctx.clearRect(0,0,canvas.width,canvas.height);canvas.style.display='none';
 }
 
-function stopParticles() {
-  if (particleAnim) cancelAnimationFrame(particleAnim);
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  canvas.style.display = 'none';
-}
-
-// ── MAIN COUNTDOWN ────────────────────────────────────────
-// Mode A: today has a box → show 90-min window countdown (urgency)
-// Mode B: no box today    → show time until next box at 9:00
-
-function setUrgent(on) {
-  ['cdBlockH','cdBlockM','cdBlockS'].forEach(id => {
-    document.getElementById(id).classList.toggle('urgent', on);
-  });
-}
-
-function updateCountdown() {
-  const today = todayStr();
-  const now   = new Date();
-
-  const todayItem = SCHEDULE.find(s => s.date === today);
-
-  if (todayItem) {
-    // Deadline = today 9:00 + 90 min
-    const deadline = new Date(today + 'T09:00:00');
-    deadline.setMinutes(deadline.getMinutes() + PROMO_WINDOW_MIN);
-    const diff = deadline - now;
-
-    if (diff <= 0) {
-      // Window closed but box still "available" visually — show next box
-      document.getElementById('countdownLabel').textContent = '✅ Акция сегодня завершена · Открой коробку чтобы узнать промокод';
-      document.getElementById('cdH').textContent = '00';
-      document.getElementById('cdM').textContent = '00';
-      document.getElementById('cdS').textContent = '00';
-      document.getElementById('nextBoxInfo').innerHTML = nextBoxLine(today);
-      setUrgent(false);
-      return;
-    }
-
-    const h  = Math.floor(diff / 3600000);
-    const m  = Math.floor((diff % 3600000) / 60000);
-    const s  = Math.floor((diff % 60000) / 1000);
-    const isUrgent = diff < 15 * 60 * 1000; // last 15 min
-
-    document.getElementById('countdownLabel').textContent =
-      isUrgent ? '🔥 Торопись! Акция заканчивается' : '⏱ До конца акции осталось';
-    document.getElementById('cdH').textContent = pad(h);
-    document.getElementById('cdM').textContent = pad(m);
-    document.getElementById('cdS').textContent = pad(s);
-    document.getElementById('nextBoxInfo').innerHTML = nextBoxLine(today);
-    setUrgent(isUrgent);
-    return;
-  }
-
-  // No box today — count to next box at 9:00
-  setUrgent(false);
-  const next = SCHEDULE.find(s => s.date > today);
-  if (!next) {
-    document.getElementById('countdownLabel').textContent = 'Все коробки открыты. До встречи в июле! 🎉';
-    document.getElementById('cdH').textContent = '--';
-    document.getElementById('cdM').textContent = '--';
-    document.getElementById('cdS').textContent = '--';
-    document.getElementById('nextBoxInfo').textContent = '';
-    return;
-  }
-
-  const nextDate = new Date(next.date + 'T09:00:00');
-  const diff = nextDate - now;
-
-  if (diff <= 0) {
-    document.getElementById('countdownLabel').textContent = '🎁 Новая коробка уже доступна!';
-    renderGrid(); return;
-  }
-
-  const h = Math.floor(diff / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  const d = next.date.slice(8) + '.' + next.date.slice(5,7);
-
-  document.getElementById('countdownLabel').textContent =
-    `До следующей коробки · ${d} ${next.day} · ${next.group}`;
-  document.getElementById('cdH').textContent = pad(h);
-  document.getElementById('cdM').textContent = pad(m);
-  document.getElementById('cdS').textContent = pad(s);
-  document.getElementById('nextBoxInfo').innerHTML =
-    `📦 Следующая коробка откроется <strong>${d} (${next.day}) в 9:00</strong>`;
-}
-
-function nextBoxLine(currentDate) {
-  const next = SCHEDULE.find(s => s.date > currentDate);
-  if (!next) return '';
-  const d = next.date.slice(8) + '.' + next.date.slice(5,7);
-  return `📦 Следующая коробка: <strong>${d} (${next.day}) в 9:00</strong>`;
-}
-
-// ── CLOSE ON BACKDROP ─────────────────────────────────────
-document.getElementById('overlay').addEventListener('click', function(e) {
-  if (e.target === this) closeOverlay();
-});
-
-// ── INIT ──────────────────────────────────────────────────
 renderGrid();
 updateCountdown();
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 </script>
 </body>
 </html>
