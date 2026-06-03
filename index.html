@@ -213,7 +213,7 @@ body{background:var(--body-bg);color:var(--dark);font-family:'Exo 2',Arial,sans-
         <div class="popup-promo-expired" id="promoExpired">⏱ Час для замовлення вийшов</div>
       </div>
       <div class="popup-timer" id="popupTimerRow">
-        <span class="popup-timer-label">⏱ До кінця акції</span>
+        <span class="popup-timer-label">⏱ До кінця акції (12:00)</span>
         <span class="popup-timer-val" id="popupCountdown">60:00</span>
       </div>
       <div class="popup-next" id="popupNext"></div>
@@ -373,12 +373,13 @@ function copyPromo() {
   });
 }
 
-/* ── POPUP TIMER (60 min personal) ────────────────────── */
+/* ── POPUP TIMER — countdown to 12:00 ─────────────────── */
 let ovTimer = null;
 
-function startPersonalCountdown() {
+function startPopupCountdown() {
   clearInterval(ovTimer);
-  const deadline = new Date(Date.now() + PROMO_MIN * 60 * 1000);
+  const today    = todayStr();
+  const deadline = new Date(today + 'T' + String(BOX_CLOSE_HOUR).padStart(2,'0') + ':00:00');
 
   const tick = () => {
     const diff = deadline - Date.now();
@@ -386,16 +387,17 @@ function startPersonalCountdown() {
     if (!el) return;
 
     if (diff <= 0) {
-      // Promo disappears
       clearInterval(ovTimer);
       el.textContent = '00:00';
       el.classList.add('dim');
       document.getElementById('promoBlock').classList.add('code-gone');
       return;
     }
-    const m = Math.floor(diff / 60000), s = Math.floor((diff % 60000) / 1000);
-    el.textContent = pad(m) + ':' + pad(s);
-    el.classList.toggle('dim', diff < 5 * 60 * 1000); // dim in last 5 min
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.textContent = h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
+    el.classList.toggle('dim', diff < 10 * 60 * 1000);
   };
   tick();
   ovTimer = setInterval(tick, 1000);
@@ -422,7 +424,7 @@ function openBox(i) {
     : '🏁 Це остання коробка червня!';
 
   document.getElementById('overlay').classList.add('active');
-  startPersonalCountdown();
+  startPopupCountdown();
   launchConfetti();
 }
 
@@ -455,10 +457,11 @@ function updateCountdown() {
       setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
       document.getElementById('cdNext').textContent = '';
     } else if (h < BOX_CLOSE_HOUR) {
-      // 9:00–11:00 — window open
-      const close11 = new Date(today + 'T11:00:00'), diff = close11 - now;
+      // 9:00–12:00 — window open, show time until 12:00
+      const close12 = new Date(today + 'T' + String(BOX_CLOSE_HOUR).padStart(2,'0') + ':00:00');
+      const diff = close12 - now;
       const isUrgent = diff < 15 * 60 * 1000;
-      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 11:00' : '⏱ Акція активна до 12:00 — залишилось';
+      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 12:00' : '⏱ До кінця акції залишилось';
       titleEl.classList.toggle('urgent', isUrgent);
       ['cdH','cdM','cdS'].forEach(id => document.getElementById(id).classList.toggle('urgent', isUrgent));
       setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
