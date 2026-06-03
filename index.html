@@ -421,35 +421,16 @@ function setCd(h, m, s) {
 }
 
 function updateCountdown() {
-  const today = todayStr(), now = new Date(), h = now.getHours() + now.getMinutes()/60;
+  const today = todayStr(), now = new Date();
   const todayItem = SCHEDULE.find(s => s.date === today);
   const titleEl   = document.getElementById('cdTitle');
 
   if (todayItem) {
-    if (h < BOX_OPEN_HOUR) {
-      // Before 9:00
-      const open9 = new Date(today + 'T09:00:00'), diff = open9 - now;
-      titleEl.textContent = '🎁 Коробка відкриється о 9:00';
-      titleEl.classList.remove('urgent');
-      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
-      document.getElementById('cdNext').textContent = '';
-    } else if (h < BOX_CLOSE_HOUR) {
-      // 9:00–12:00 — window open, show time until 12:00
-      const close12 = new Date(today + 'T' + String(BOX_CLOSE_HOUR).padStart(2,'0') + ':00:00');
-      const diff = close12 - now;
-      const isUrgent = diff < 15 * 60 * 1000;
-      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 12:00' : '⏱ До кінця акції залишилось';
-      titleEl.classList.toggle('urgent', isUrgent);
-      ['cdH','cdM','cdS'].forEach(id => document.getElementById(id).classList.toggle('urgent', isUrgent));
-      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
-      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
-    } else {
-      // After 11:00
-      titleEl.textContent = '⛔ Сьогоднішня акція завершена';
-      titleEl.classList.remove('urgent');
-      setCd('00','00','00');
-      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
-    }
+    // Today has a box — always available, show countdown to tomorrow's box
+    titleEl.textContent = '🎁 Сьогодні є коробка! Відкрий прямо зараз';
+    titleEl.classList.remove('urgent');
+    setCd('--', '--', '--');
+    document.getElementById('cdNext').innerHTML = nextBoxLine(today);
     return;
   }
 
