@@ -17,7 +17,6 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;font-size:var(--text-md);min-height:100vh;}
-/* HEADER */
 .header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:3px solid var(--red);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--sh-sm);}
 .header-logo img{height:40px;display:block;}
 .header-center{text-align:center;}
@@ -26,13 +25,11 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .header-counter{text-align:right;}
 .header-counter .count{font-size:38px;font-weight:900;color:var(--red);line-height:1;}
 .header-counter .label{font-size:var(--text-sm);color:var(--muted);font-weight:500;}
-/* HERO */
 .hero{background:linear-gradient(160deg,rgba(255,249,240,.92) 0%,rgba(255,245,245,.88) 40%,rgba(240,250,245,.90) 80%,rgba(245,255,248,.92) 100%);backdrop-filter:blur(2px);padding:48px 24px 40px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;z-index:2;}
 .hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-size:var(--text-sm);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:30px;margin-bottom:20px;}
 .hero h2{font-size:36px;font-weight:900;line-height:1.15;margin-bottom:10px;}
 .hero h2 em{color:var(--red);font-style:normal;}
 .hero p{font-size:var(--text-lg);color:var(--muted);font-weight:500;}
-/* COUNTDOWN */
 .countdown-wrap{padding:36px 24px 24px;text-align:center;position:relative;z-index:2;}
 .cd-title{font-size:var(--text-sm);font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;}
 .cd-title.urgent{color:var(--red);}
@@ -44,11 +41,9 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .cd-sep{font-size:36px;font-weight:900;color:var(--red-mid);padding-bottom:20px;}
 .cd-next{font-size:var(--text-md);color:var(--muted);margin-top:16px;}
 .cd-next strong{color:var(--dark);font-weight:700;}
-/* GRID */
 .grid-section{padding:8px 24px 64px;max-width:1140px;margin:0 auto;position:relative;z-index:2;}
 .grid-title{text-align:center;font-size:var(--text-sm);font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:24px;}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:16px;}
-/* CARDS */
 .box-card{border-radius:var(--r-md);overflow:hidden;transition:transform .22s ease,box-shadow .22s ease;position:relative;}
 .box-card.locked{background:var(--white);border:1.5px solid var(--border);box-shadow:var(--sh-sm);}
 .box-card.available{background:linear-gradient(145deg,#fff0f1 0%,#fff5f0 100%);border:2px solid var(--red);box-shadow:var(--sh-red);cursor:pointer;animation:floatCard 3s ease-in-out infinite;}
@@ -56,15 +51,14 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .box-card.opened{background:var(--green-soft);border:1.5px solid #b8dfc8;box-shadow:var(--sh-sm);}
 .box-card.expired{background:#f5f5f8;border:1.5px dashed #ccc;box-shadow:none;opacity:.7;}
 .box-card.future{background:linear-gradient(145deg,#f0f7ff 0%,#eef5fb 100%);border:1.5px solid #c8ddf0;box-shadow:var(--sh-sm);}
-.box-card.coming{background:var(--white);border:1.5px solid var(--border);box-shadow:var(--sh-sm);}
 @keyframes floatCard{0%,100%{transform:translateY(0);box-shadow:var(--sh-red);}50%{transform:translateY(-4px);box-shadow:0 12px 36px rgba(232,25,44,.25);}}
 .card-shimmer{position:absolute;inset:0;border-radius:var(--r-md);background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);background-size:220% 100%;animation:shimmer 2.5s linear infinite;pointer-events:none;}
 @keyframes shimmer{0%{background-position:220% 0}100%{background-position:-220% 0}}
 .card-inner{padding:18px 16px 16px;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;}
 .card-date{font-size:var(--text-sm);font-weight:700;color:var(--muted);width:100%;text-align:left;}
 .box-card.available .card-date{color:var(--red);}
-.box-card.opened   .card-date{color:var(--green);}
-.box-card.expired  .card-date{color:#aaa;}
+.box-card.opened .card-date{color:var(--green);}
+.box-card.expired .card-date{color:#aaa;}
 .card-graphic{width:82px;height:82px;flex-shrink:0;}
 .card-graphic svg{width:100%;height:100%;}
 .card-cta{background:var(--red);color:#fff;border:none;border-radius:var(--r-sm);padding:10px 0;width:100%;font-family:inherit;font-size:var(--text-sm);font-weight:800;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:background .15s,transform .1s;}
@@ -74,15 +68,12 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .card-opened-disc{font-size:32px;font-weight:900;color:var(--green);line-height:1;}
 .card-opened-name{font-size:13px;color:var(--dark);margin-top:5px;font-weight:600;line-height:1.35;}
 .card-locked-label,.card-expired-label,.card-future-label{font-size:var(--text-sm);font-weight:600;}
-.card-locked-label{color:var(--muted);}
 .card-expired-label{color:#aaa;}
 .card-future-label{color:#5b88b5;font-weight:700;letter-spacing:.3px;}
-/* POPUP OVERLAY */
 .overlay{display:none;position:fixed;inset:0;background:rgba(20,15,30,.65);backdrop-filter:blur(8px);z-index:1000;align-items:center;justify-content:center;padding:20px;}
 .overlay.active{display:flex;}
 .popup{background:var(--white);border-radius:var(--r-lg);width:100%;max-width:480px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.22);animation:popupIn .45s cubic-bezier(.34,1.56,.64,1) both;position:relative;}
 @keyframes popupIn{from{transform:scale(.6) translateY(60px);opacity:0;}to{transform:scale(1) translateY(0);opacity:1;}}
-/* POPUP TOP */
 .popup-top{background:linear-gradient(135deg,#E8192C 0%,#c0111f 100%);padding:28px 32px 24px;text-align:center;position:relative;overflow:hidden;}
 .popup-top::before{content:'';position:absolute;width:200px;height:200px;background:rgba(255,255,255,.07);border-radius:50%;top:-80px;right:-60px;}
 .popup-top::after{content:'';position:absolute;width:140px;height:140px;background:rgba(255,255,255,.05);border-radius:50%;bottom:-50px;left:-40px;}
@@ -90,7 +81,6 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 @keyframes giftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .popup-discount{font-size:64px;font-weight:900;color:#fff;line-height:1;text-shadow:0 4px 20px rgba(0,0,0,.2);position:relative;z-index:1;animation:discIn .4s .35s cubic-bezier(.34,1.56,.64,1) both;}
 @keyframes discIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
-/* POPUP BODY */
 .popup-body{padding:20px 28px 26px;display:flex;flex-direction:column;gap:12px;}
 .popup-product-name{font-size:19px;font-weight:800;color:var(--dark);text-align:center;line-height:1.2;}
 .popup-product-skus{font-size:12px;color:var(--muted);text-align:center;background:#f5f5f8;border-radius:10px;padding:9px 14px;line-height:1.7;font-weight:500;}
@@ -107,12 +97,7 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .popup-order:active{transform:scale(.98);}
 .popup-close{background:none;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:10px;width:100%;font-family:inherit;font-size:14px;color:var(--muted);cursor:pointer;font-weight:600;transition:border-color .15s,color .15s;}
 .popup-close:hover{border-color:var(--dark);color:var(--dark);}
-/* WEEKEND CARD */
-.box-card.weekend{background:#f4f4f8;border:1.5px solid #e4e4ee;box-shadow:none;opacity:.55;}
-.card-weekend-label{font-size:12px;color:#aaa;font-weight:600;letter-spacing:.3px;}
-/* IMPROVED OPENED CARD */
 .card-opened-promo{font-size:11px;font-weight:700;color:#4a9a6a;letter-spacing:1.5px;background:var(--green-soft);border-radius:6px;padding:2px 8px;display:inline-block;margin-top:3px;}
-/* SUN DECORATION */
 .sun-deco{position:absolute;top:-40px;right:-40px;width:180px;height:180px;pointer-events:none;z-index:0;opacity:.13;animation:sunSpin 40s linear infinite,sunPulse 6s ease-in-out infinite;}
 @keyframes sunSpin{to{transform:rotate(360deg);}}
 @keyframes sunPulse{0%,100%{opacity:.13;}50%{opacity:.18;}}
@@ -120,9 +105,7 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 </style>
 </head>
 <body>
-
 <canvas id="confettiCanvas"></canvas>
-
 <header class="header">
   <div class="header-logo"><img src="logo.png" alt="Luxel"></div>
   <div class="header-center">
@@ -134,7 +117,6 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
     <div class="label">коробок залишилось</div>
   </div>
 </header>
-
 <section class="hero">
   <svg class="sun-deco" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
     <circle cx="90" cy="90" r="44" fill="#f0a500"/>
@@ -149,7 +131,6 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
   <h2>Відкривай <em>нову знижку</em><br>кожного ранку</h2>
   <p>Щодня з 9:00 до 12:00 — нова коробка з ексклюзивною акцією</p>
 </section>
-
 <div class="countdown-wrap">
   <div class="cd-title" id="cdTitle">До наступної коробки</div>
   <div class="cd-digits">
@@ -161,12 +142,10 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
   </div>
   <div class="cd-next" id="cdNext"></div>
 </div>
-
 <section class="grid-section">
   <div class="grid-title">— Усі коробки червня —</div>
   <div class="grid" id="boxGrid"></div>
 </section>
-
 <div class="overlay" id="overlay">
   <div class="popup">
     <div class="popup-top">
@@ -200,356 +179,108 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
     </div>
   </div>
 </div>
-
 <footer class="footer">
   LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Знижки діють з 9:00 до 12:00
 </footer>
-
 <script>
-/* ── SCHEDULE ──────────────────────────────────────────── */
-const BOX_OPEN_HOUR  = 9;   // 09:00
-const BOX_CLOSE_HOUR = 12;  // 12:00
-
-const SCHEDULE = [
-  // ── ТИЖДЕНЬ 1 ──
-  {date:"2026-06-03",day:"Ср",group:"Лампи А60",        skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",                    discount:15,   promo:"A60X"},
-  {date:"2026-06-04",day:"Чт",group:"Лампи А60",        skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",                    discount:15,   promo:"A60X"},
-  {date:"2026-06-05",day:"Пт",group:"DLD",              skus:"Всі моделі",                                                     discount:20,   promo:"DLD10"},
-  // ── ТИЖДЕНЬ 2 ──
-  {date:"2026-06-08",day:"Пн",group:"JAZZ білий",       skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",                       discount:15,   promo:"JAZZ"},
-  {date:"2026-06-09",day:"Вт",group:"Лампи C37 / C35",  skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                            discount:15,   promo:"C37K"},
-  {date:"2026-06-10",day:"Ср",group:"OPERA чорний",     skus:"2101 · 2102 · 2104 · 2107 · 2108",                              discount:20,   promo:"OPBK"},
-  {date:"2026-06-11",day:"Чт",group:"Лампи G45",        skus:"053-NE · 056-NE · 057-NE · 058-NE",                             discount:20,   promo:"G45L"},
-  {date:"2026-06-12",day:"Пт",group:"SSWL",             skus:"Всі моделі",                                                     discount:15,   promo:"SSWL1"},
-  // ── ТИЖДЕНЬ 3 ──
-  {date:"2026-06-15",day:"Пн",group:"TL",               skus:"Всі моделі",                                                     discount:10,   promo:"TL10X"},
-  {date:"2026-06-16",day:"Вт",group:"Датчик руху MS",   skus:"Всі моделі",                                                     discount:5,    promo:"MS5DT"},
-  {date:"2026-06-17",day:"Ср",group:"BENEFICE",         skus:"Всі моделі",                                                     discount:15,   promo:"BNF15"},
-  {date:"2026-06-18",day:"Чт",group:"DL-12N",           skus:"DL-12N",                                                         discount:"1+1",promo:"DL121"},
-  {date:"2026-06-19",day:"Пт",group:"DLSG / DLRG",      skus:"Всі моделі",                                                     discount:15,   promo:"DLG15"},
-  // ── ТИЖДЕНЬ 4 ──
-  {date:"2026-06-22",day:"Пн",group:"SFL-60",           skus:"SFL-60C (у гофрокартоні)",                                       discount:"3+1",promo:"SFL31"},
-  {date:"2026-06-23",day:"Вт",group:"Лампи А60",        skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",           discount:20,   promo:"A6X2"},
-  {date:"2026-06-24",day:"Ср",group:"JAZZ кольорові",   skus:"Теракота · Бронза · Крем — вся палітра",                         discount:20,   promo:"JZCL"},
-  {date:"2026-06-25",day:"Чт",group:"Лампи C37",        skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                            discount:20,   promo:"C37X"},
-  {date:"2026-06-26",day:"Пт",group:"Умови оплати",     skus:"Приймаємо б/г платежі по звичайному курсу та ФОП 0%",           discount:null, promo:null, info:true},
-  // ── ТИЖДЕНЬ 5 ──
-  {date:"2026-06-29",day:"Пн",group:"LPM",              skus:"Всі моделі",                                                     discount:10,   promo:"LPM10"},
-  {date:"2026-06-30",day:"Вт",group:"DP",               skus:"Всі моделі",                                                     discount:20,   promo:"LPM10"},
+const BOX_OPEN_HOUR=9,BOX_CLOSE_HOUR=12;
+const SCHEDULE=[
+  {date:"2026-06-03",day:"Ср",group:"Лампи А60",skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",discount:15,promo:"A60X"},
+  {date:"2026-06-04",day:"Чт",group:"Лампи А60",skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",discount:15,promo:"A60X"},
+  {date:"2026-06-05",day:"Пт",group:"DLD",skus:"Всі моделі",discount:20,promo:"DLD10"},
+  {date:"2026-06-08",day:"Пн",group:"JAZZ білий",skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",discount:15,promo:"JAZZ"},
+  {date:"2026-06-09",day:"Вт",group:"Лампи C37 / C35",skus:"042 · 044 · 045 · 047 · 048 -NE/CE",discount:15,promo:"C37K"},
+  {date:"2026-06-10",day:"Ср",group:"OPERA чорний",skus:"2101 · 2102 · 2104 · 2107 · 2108",discount:20,promo:"OPBK"},
+  {date:"2026-06-11",day:"Чт",group:"Лампи G45",skus:"053-NE · 056-NE · 057-NE · 058-NE",discount:20,promo:"G45L"},
+  {date:"2026-06-12",day:"Пт",group:"SSWL",skus:"Всі моделі",discount:15,promo:"SSWL1"},
+  {date:"2026-06-15",day:"Пн",group:"TL",skus:"Всі моделі",discount:10,promo:"TL10X"},
+  {date:"2026-06-16",day:"Вт",group:"Датчик руху MS",skus:"Всі моделі",discount:5,promo:"MS5DT"},
+  {date:"2026-06-17",day:"Ср",group:"BENEFICE",skus:"Всі моделі",discount:15,promo:"BNF15"},
+  {date:"2026-06-18",day:"Чт",group:"DL-12N",skus:"DL-12N",discount:"1+1",promo:"DL121"},
+  {date:"2026-06-19",day:"Пт",group:"DLSG / DLRG",skus:"Всі моделі",discount:15,promo:"DLG15"},
+  {date:"2026-06-22",day:"Пн",group:"SFL-60",skus:"SFL-60C (у гофрокартоні)",discount:"3+1",promo:"SFL31"},
+  {date:"2026-06-23",day:"Вт",group:"Лампи А60",skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",discount:20,promo:"A6X2"},
+  {date:"2026-06-24",day:"Ср",group:"JAZZ кольорові",skus:"Теракота · Бронза · Крем — вся палітра",discount:20,promo:"JZCL"},
+  {date:"2026-06-25",day:"Чт",group:"Лампи C37",skus:"042 · 044 · 045 · 047 · 048 -NE/CE",discount:20,promo:"C37X"},
+  {date:"2026-06-26",day:"Пт",group:"Умови оплати",skus:"Приймаємо б/г платежі по звичайному курсу та ФОП 0%",discount:null,promo:null,info:true},
+  {date:"2026-06-29",day:"Пн",group:"LPM",skus:"Всі моделі",discount:10,promo:"LPM10"},
+  {date:"2026-06-30",day:"Вт",group:"DP",skus:"Всі моделі",discount:20,promo:"LPM10"},
 ];
-
-/* ── HELPERS ───────────────────────────────────────────── */
-const todayStr = () => new Date().toISOString().slice(0,10);
-const pad = n => String(n).padStart(2,'0');
-const dl  = d => d.slice(8)+'.'+d.slice(5,7);
-
-function nowHour() { return new Date().getHours() + new Date().getMinutes()/60; }
-
-function isWeekend(dateStr) {
-  const d = new Date(dateStr + 'T12:00:00');
-  return d.getDay() === 0 || d.getDay() === 6;
+const todayStr=()=>new Date().toISOString().slice(0,10);
+const pad=n=>String(n).padStart(2,'0');
+const dl=d=>d.slice(8)+'.'+d.slice(5,7);
+function nowHour(){return new Date().getHours()+new Date().getMinutes()/60;}
+function isWeekend(s){const d=new Date(s+'T12:00:00');return d.getDay()===0||d.getDay()===6;}
+function getState(item){
+  if(isWeekend(item.date))return'weekend';
+  const t=todayStr();
+  if(item.date<t)return'opened';
+  if(item.date>t)return'locked';
+  const h=nowHour();
+  if(h<BOX_OPEN_HOUR)return'locked';
+  if(h<BOX_CLOSE_HOUR)return'available';
+  return'expired';
 }
-
-function getState(item) {
-  if (isWeekend(item.date)) return 'weekend';
-  const t = todayStr();
-  if (item.date < t) return 'opened';
-  if (item.date > t) return 'locked';
-  const h = nowHour();
-  if (h < BOX_OPEN_HOUR)  return 'locked';
-  if (h < BOX_CLOSE_HOUR) return 'available';
-  return 'expired';
-}
-
-/* ── SVGs ──────────────────────────────────────────────── */
-function svgLocked(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="14" y="48" width="72" height="44" rx="6" fill="#f0f2f7" stroke="#dde0ea" stroke-width="1.5"/>
-  <rect x="10" y="34" width="80" height="18" rx="5" fill="#e8eaf2" stroke="#dde0ea" stroke-width="1.5"/>
-  <rect x="45" y="34" width="10" height="56" fill="#dde0ea" opacity=".6"/>
-  <rect x="10" y="59" width="80" height="7" fill="#dde0ea" opacity=".4"/>
-  <rect x="36" y="53" width="28" height="18" rx="4" fill="#c8cdd8"/>
-  <path d="M40,53 Q40,43 50,43 Q60,43 60,53" stroke="#b8bdd0" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <circle cx="50" cy="62" r="4.5" fill="#aab0c8"/>
-</svg>`; }
-
-function svgAvailable(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="12" y="46" width="76" height="48" rx="6" fill="#fff3f4" stroke="#E8192C" stroke-width="2"/>
-  <rect x="46" y="46" width="8" height="48" fill="#E8192C" opacity=".7"/>
-  <rect x="12" y="61" width="76" height="8" fill="#E8192C" opacity=".7"/>
-  <rect x="8" y="31" width="84" height="20" rx="5" fill="#fff7f7" stroke="#E8192C" stroke-width="2"/>
-  <rect x="46" y="31" width="8" height="20" fill="#E8192C" opacity=".7"/>
-  <ellipse cx="36" cy="31" rx="14" ry="9" fill="#ffccd0" transform="rotate(-22,36,31)"/>
-  <ellipse cx="64" cy="31" rx="14" ry="9" fill="#ffccd0" transform="rotate(22,64,31)"/>
-  <circle cx="50" cy="31" r="8" fill="#E8192C"/>
-  <circle cx="50" cy="31" r="4" fill="#fff"/>
-</svg>`; }
-
-function svgOpened(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="12" y="46" width="76" height="48" rx="6" fill="#edf7f1" stroke="#b8dfc8" stroke-width="1.5"/>
-  <rect x="12" y="61" width="76" height="8" fill="#b8dfc8" opacity=".5"/>
-  <rect x="8" y="23" width="84" height="20" rx="5" fill="#e0f0e8" stroke="#b8dfc8" stroke-width="1.5" transform="rotate(-12,50,33)" opacity=".7"/>
-  <polyline points="30,72 45,86 72,52" stroke="#1a7a35" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>`; }
-
-function svgExpired(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <rect x="12" y="46" width="76" height="48" rx="6" fill="#f2f2f5" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <rect x="8" y="31" width="84" height="20" rx="5" fill="#eeeef2" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <line x1="30" y1="30" x2="70" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
-  <line x1="70" y1="30" x2="30" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
-</svg>`; }
-
-/* ── GRID ──────────────────────────────────────────────── */
-function discLabel(d) {
-  if (d === null || d === undefined) return '';
-  if (typeof d === 'string') return d;
-  return '-' + d + '%';
-}
-
-function renderGrid() {
-  const grid = document.getElementById('boxGrid');
-  grid.innerHTML = '';
-  SCHEDULE.forEach((item, i) => {
-    const state = getState(item);
-    if (state === 'weekend') return;
-    const card  = document.createElement('div');
-    const cssMap = {opened:'opened', available:'available', expired:'expired', locked:'future'};
-    card.className = 'box-card ' + (cssMap[state] || 'future');
-    const d = dl(item.date);
-    let html = '';
-
-    if (state === 'available') {
-      html = `<div class="card-shimmer"></div>
-      <div class="card-inner">
-        <div class="card-date">🔴 ${d} ${item.day} — СЬОГОДНІ</div>
-        <div class="card-graphic">${svgAvailable()}</div>
-        <button class="card-cta" onclick="openBox(${i})">Відкрити 🎁</button>
-      </div>`;
-    } else if (state === 'opened') {
-      const disc = discLabel(item.discount);
-      html = `<div class="card-inner">
-        <div class="card-date">✓ ${d} ${item.day}</div>
-        <div class="card-graphic">${svgOpened()}</div>
-        <div class="card-opened">
-          ${item.info
-            ? `<div class="card-opened-disc" style="font-size:20px">ℹ️</div><div class="card-opened-name">${item.group}</div>`
-            : `<div class="card-opened-disc">${disc}</div>
-               <div class="card-opened-name">${item.group}</div>
-               ${item.promo ? `<div class="card-opened-promo">${item.promo}</div>` : ''}`
-          }
-        </div>
-      </div>`;
-    } else if (state === 'expired') {
-      html = `<div class="card-inner">
-        <div class="card-date" style="color:#bbb;">⛔ ${d} ${item.day}</div>
-        <div class="card-graphic">${svgExpired()}</div>
-        <div class="card-expired-label">Акція закінчилась</div>
-      </div>`;
-    } else {
-      html = `<div class="card-inner">
-        <div class="card-date">${d} ${item.day}</div>
-        <div class="card-graphic">${svgLocked()}</div>
-        <div class="card-future-label">з ${d}</div>
-      </div>`;
-    }
-    card.innerHTML = html;
-    grid.appendChild(card);
+function svgLocked(){return`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="48" width="72" height="44" rx="6" fill="#f0f2f7" stroke="#dde0ea" stroke-width="1.5"/><rect x="10" y="34" width="80" height="18" rx="5" fill="#e8eaf2" stroke="#dde0ea" stroke-width="1.5"/><rect x="45" y="34" width="10" height="56" fill="#dde0ea" opacity=".6"/><rect x="10" y="59" width="80" height="7" fill="#dde0ea" opacity=".4"/><rect x="36" y="53" width="28" height="18" rx="4" fill="#c8cdd8"/><path d="M40,53 Q40,43 50,43 Q60,43 60,53" stroke="#b8bdd0" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="50" cy="62" r="4.5" fill="#aab0c8"/></svg>`;}
+function svgAvailable(){return`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="46" width="76" height="48" rx="6" fill="#fff3f4" stroke="#E8192C" stroke-width="2"/><rect x="46" y="46" width="8" height="48" fill="#E8192C" opacity=".7"/><rect x="12" y="61" width="76" height="8" fill="#E8192C" opacity=".7"/><rect x="8" y="31" width="84" height="20" rx="5" fill="#fff7f7" stroke="#E8192C" stroke-width="2"/><rect x="46" y="31" width="8" height="20" fill="#E8192C" opacity=".7"/><ellipse cx="36" cy="31" rx="14" ry="9" fill="#ffccd0" transform="rotate(-22,36,31)"/><ellipse cx="64" cy="31" rx="14" ry="9" fill="#ffccd0" transform="rotate(22,64,31)"/><circle cx="50" cy="31" r="8" fill="#E8192C"/><circle cx="50" cy="31" r="4" fill="#fff"/></svg>`;}
+function svgOpened(){return`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="46" width="76" height="48" rx="6" fill="#edf7f1" stroke="#b8dfc8" stroke-width="1.5"/><rect x="12" y="61" width="76" height="8" fill="#b8dfc8" opacity=".5"/><rect x="8" y="23" width="84" height="20" rx="5" fill="#e0f0e8" stroke="#b8dfc8" stroke-width="1.5" transform="rotate(-12,50,33)" opacity=".7"/><polyline points="30,72 45,86 72,52" stroke="#1a7a35" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function svgExpired(){return`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect x="12" y="46" width="76" height="48" rx="6" fill="#f2f2f5" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,3"/><rect x="8" y="31" width="84" height="20" rx="5" fill="#eeeef2" stroke="#ccc" stroke-width="1.5" stroke-dasharray="5,3"/><line x1="30" y1="30" x2="70" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/><line x1="70" y1="30" x2="30" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/></svg>`;}
+function discLabel(d){if(d===null||d===undefined)return'';if(typeof d==='string')return d;return'-'+d+'%';}
+function renderGrid(){
+  const grid=document.getElementById('boxGrid');grid.innerHTML='';
+  SCHEDULE.forEach((item,i)=>{
+    const state=getState(item);if(state==='weekend')return;
+    const card=document.createElement('div');
+    const cssMap={opened:'opened',available:'available',expired:'expired',locked:'future'};
+    card.className='box-card '+(cssMap[state]||'future');
+    const d=dl(item.date);let html='';
+    if(state==='available'){html=`<div class="card-shimmer"></div><div class="card-inner"><div class="card-date">🔴 ${d} ${item.day} — СЬОГОДНІ</div><div class="card-graphic">${svgAvailable()}</div><button class="card-cta" onclick="openBox(${i})">Відкрити 🎁</button></div>`;}
+    else if(state==='opened'){const disc=discLabel(item.discount);html=`<div class="card-inner"><div class="card-date">✓ ${d} ${item.day}</div><div class="card-graphic">${svgOpened()}</div><div class="card-opened">${item.info?`<div class="card-opened-disc" style="font-size:20px">ℹ️</div><div class="card-opened-name">${item.group}</div>`:`<div class="card-opened-disc">${disc}</div><div class="card-opened-name">${item.group}</div>${item.promo?`<div class="card-opened-promo">${item.promo}</div>`:''}`}</div></div>`;}
+    else if(state==='expired'){html=`<div class="card-inner"><div class="card-date" style="color:#bbb;">⛔ ${d} ${item.day}</div><div class="card-graphic">${svgExpired()}</div><div class="card-expired-label">Акція закінчилась</div></div>`;}
+    else{html=`<div class="card-inner"><div class="card-date">${d} ${item.day}</div><div class="card-graphic">${svgLocked()}</div><div class="card-future-label">з ${d}</div></div>`;}
+    card.innerHTML=html;grid.appendChild(card);
   });
-  document.getElementById('boxesLeftNum').textContent =
-    SCHEDULE.filter(s => ['available','locked'].includes(getState(s))).length;
+  document.getElementById('boxesLeftNum').textContent=SCHEDULE.filter(s=>['available','locked'].includes(getState(s))).length;
 }
-
-/* ── PROMO COPY ────────────────────────────────────────── */
-function copyPromo() {
-  navigator.clipboard.writeText(document.getElementById('popupPromo').textContent).then(() => {
-    const el = document.getElementById('promoCopied');
-    el.textContent = '✓ Скопійовано!';
-    setTimeout(() => el.textContent = '', 2000);
-  });
+function copyPromo(){navigator.clipboard.writeText(document.getElementById('popupPromo').textContent).then(()=>{const el=document.getElementById('promoCopied');el.textContent='✓ Скопійовано!';setTimeout(()=>el.textContent='',2000);});}
+function openBox(i){
+  const item=SCHEDULE[i];const disc=discLabel(item.discount);const discEl=document.getElementById('popupDiscount');
+  if(item.info){discEl.textContent='ℹ️';discEl.style.fontSize='48px';}else{discEl.textContent=disc||'🎁';discEl.style.fontSize='';}
+  document.getElementById('popupProduct').textContent=item.group;
+  document.getElementById('popupSkus').textContent=item.skus||'';
+  const pb=document.getElementById('promoBlock');
+  if(item.promo){pb.style.display='';document.getElementById('popupPromo').textContent=item.promo;document.getElementById('promoCopied').textContent='';}else{pb.style.display='none';}
+  const next=SCHEDULE.find(s=>s.date>item.date&&!isWeekend(s.date)&&!s.info);
+  document.getElementById('popupNext').innerHTML=next?`📦 Наступна коробка: <strong>${dl(next.date)} (${next.day})</strong>`:'🏁 Це остання коробка червня!';
+  document.getElementById('overlay').classList.add('active');launchConfetti();
 }
-
-/* ── OPEN BOX ──────────────────────────────────────────── */
-function openBox(i) {
-  const item = SCHEDULE[i];
-  const disc = discLabel(item.discount);
-  const discEl = document.getElementById('popupDiscount');
-  if (item.info) {
-    discEl.textContent = 'ℹ️';
-    discEl.style.fontSize = '48px';
-  } else {
-    discEl.textContent = disc || '🎁';
-    discEl.style.fontSize = '';
-  }
-
-  document.getElementById('popupProduct').textContent = item.group;
-  document.getElementById('popupSkus').textContent    = item.skus || '';
-
-  const promoBlock = document.getElementById('promoBlock');
-  if (item.promo) {
-    promoBlock.style.display = '';
-    document.getElementById('popupPromo').textContent  = item.promo;
-    document.getElementById('promoCopied').textContent = '';
-  } else {
-    promoBlock.style.display = 'none';
-  }
-
-  const nextItem = SCHEDULE.find(s => s.date > item.date && !isWeekend(s.date) && !s.info);
-  document.getElementById('popupNext').innerHTML = nextItem
-    ? `📦 Наступна коробка: <strong>${dl(nextItem.date)} (${nextItem.day})</strong>`
-    : '🏁 Це остання коробка червня!';
-
-  document.getElementById('overlay').classList.add('active');
-  launchConfetti();
-}
-
-function closeOverlay() {
-  document.getElementById('overlay').classList.remove('active');
-}
-document.getElementById('overlay').addEventListener('click', e => {
-  if (e.target.id === 'overlay') closeOverlay();
-});
-
-/* ── MAIN COUNTDOWN ────────────────────────────────────── */
-function setCd(h, m, s) {
-  document.getElementById('cdH').textContent = h;
-  document.getElementById('cdM').textContent = m;
-  document.getElementById('cdS').textContent = s;
-}
-
-function updateCountdown() {
-  const today = todayStr(), now = new Date();
-  const h = nowHour(); // ← фікс: визначаємо h тут
-  const todayItem = SCHEDULE.find(s => s.date === today);
-  const titleEl   = document.getElementById('cdTitle');
-
-  if (todayItem) {
-    if (h < BOX_OPEN_HOUR) {
-      const open9 = new Date(today + 'T09:00:00'), diff = open9 - now;
-      titleEl.textContent = '🎁 Коробка відкриється о 9:00';
-      titleEl.classList.remove('urgent');
-      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
-      document.getElementById('cdNext').textContent = '';
-    } else if (h < BOX_CLOSE_HOUR) {
-      const close12 = new Date(today + 'T12:00:00'), diff = close12 - now;
-      const isUrgent = diff < 15 * 60 * 1000;
-      titleEl.textContent = isUrgent ? '🔥 Поспішай! Акція закінчується о 12:00' : '⏱ До кінця акції залишилось';
-      titleEl.classList.toggle('urgent', isUrgent);
-      ['cdH','cdM','cdS'].forEach(id => document.getElementById(id).classList.toggle('urgent', isUrgent));
-      setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
-      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
-    } else {
-      titleEl.textContent = '⛔ Сьогоднішня акція завершена';
-      titleEl.classList.remove('urgent');
-      setCd('00','00','00');
-      document.getElementById('cdNext').innerHTML = nextBoxLine(today);
-    }
+function closeOverlay(){document.getElementById('overlay').classList.remove('active');}
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target.id==='overlay')closeOverlay();});
+function setCd(h,m,s){document.getElementById('cdH').textContent=h;document.getElementById('cdM').textContent=m;document.getElementById('cdS').textContent=s;}
+function updateCountdown(){
+  const today=todayStr(),now=new Date(),h=nowHour();
+  const todayItem=SCHEDULE.find(s=>s.date===today);
+  const titleEl=document.getElementById('cdTitle');
+  if(todayItem){
+    if(h<BOX_OPEN_HOUR){const diff=new Date(today+'T09:00:00')-now;titleEl.textContent='🎁 Коробка відкриється о 9:00';titleEl.classList.remove('urgent');setCd(pad(Math.floor(diff/3600000)),pad(Math.floor((diff%3600000)/60000)),pad(Math.floor((diff%60000)/1000)));document.getElementById('cdNext').textContent='';}
+    else if(h<BOX_CLOSE_HOUR){const diff=new Date(today+'T12:00:00')-now;const u=diff<15*60*1000;titleEl.textContent=u?'🔥 Поспішай! Акція закінчується о 12:00':'⏱ До кінця акції залишилось';titleEl.classList.toggle('urgent',u);['cdH','cdM','cdS'].forEach(id=>document.getElementById(id).classList.toggle('urgent',u));setCd(pad(Math.floor(diff/3600000)),pad(Math.floor((diff%3600000)/60000)),pad(Math.floor((diff%60000)/1000)));document.getElementById('cdNext').innerHTML=nextBoxLine(today);}
+    else{titleEl.textContent='⛔ Сьогоднішня акція завершена';titleEl.classList.remove('urgent');setCd('00','00','00');document.getElementById('cdNext').innerHTML=nextBoxLine(today);}
     return;
   }
-
   titleEl.classList.remove('urgent');
-  const next = SCHEDULE.find(s => s.date > today);
-  if (!next) {
-    titleEl.textContent = '🎉 Усі коробки відкрито. До зустрічі у липні!';
-    setCd('--','--','--');
-    document.getElementById('cdNext').textContent = '';
-    return;
-  }
-  const nextDate = new Date(next.date + 'T09:00:00'), diff = nextDate - now;
-  titleEl.textContent = `До наступної коробки · ${dl(next.date)} ${next.day} · ${next.group}`;
-  setCd(pad(Math.floor(diff/3600000)), pad(Math.floor((diff%3600000)/60000)), pad(Math.floor((diff%60000)/1000)));
-  document.getElementById('cdNext').innerHTML =
-    `📦 Наступна коробка відкриється <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;
+  const next=SCHEDULE.find(s=>s.date>today);
+  if(!next){titleEl.textContent='🎉 Усі коробки відкрито. До зустрічі у липні!';setCd('--','--','--');document.getElementById('cdNext').textContent='';return;}
+  const diff=new Date(next.date+'T09:00:00')-now;
+  titleEl.textContent=`До наступної коробки · ${dl(next.date)} ${next.day} · ${next.group}`;
+  setCd(pad(Math.floor(diff/3600000)),pad(Math.floor((diff%3600000)/60000)),pad(Math.floor((diff%60000)/1000)));
+  document.getElementById('cdNext').innerHTML=`📦 Наступна коробка відкриється <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;
 }
-
-function nextBoxLine(cur) {
-  const next = SCHEDULE.find(s => s.date > cur);
-  if (!next) return '';
-  return `📦 Наступна коробка: <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;
-}
-
-/* ── CONFETTI ──────────────────────────────────────────── */
-const confettiCanvas = document.getElementById('confettiCanvas');
-const cctx = confettiCanvas.getContext('2d');
-let confettiPieces = [], confettiAnim = null;
-
-const CONFETTI_COLORS = [
-  '#E8192C','#ff3348','#ff6b7a','#ff99a8',
-  '#f0a500','#ffc107','#ffe066','#fff3b0',
-  '#1a7a35','#34c768','#80e8a0',
-  '#ffffff','#e0d0ff','#b388ff','#7c4dff',
-  '#00bcd4','#40e0ff',
-];
-
-function launchConfetti() {
-  confettiCanvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;display:block;';
-  confettiCanvas.width  = window.innerWidth;
-  confettiCanvas.height = window.innerHeight;
-  confettiPieces = [];
-  const cx = confettiCanvas.width / 2;
-  const cy = confettiCanvas.height + 20;
-  for (let i = 0; i < 300; i++) {
-    const angle = -Math.PI/2 + (Math.random() - 0.5) * Math.PI * 1.4;
-    const speed = 10 + Math.random() * 22;
-    const r = Math.random();
-    const type = r < 0.40 ? 'ribbon' : r < 0.75 ? 'rect' : 'circle';
-    confettiPieces.push({
-      x: cx + (Math.random()-0.5)*120, y: cy,
-      vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-      color: CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)],
-      type,
-      w: type==='ribbon' ? 4+Math.random()*4  : 7+Math.random()*10,
-      h: type==='ribbon' ? 18+Math.random()*22 : 7+Math.random()*10,
-      r: 4+Math.random()*6,
-      rot: Math.random()*Math.PI*2, rotV: (Math.random()-0.5)*0.5,
-      life: 1, decay: 0.005 + Math.random()*0.006,
-      gravity: 0.22 + Math.random()*0.12, swing: (Math.random()-0.5)*0.25,
-    });
-  }
-  if (confettiAnim) cancelAnimationFrame(confettiAnim);
-  animConfetti();
-}
-
-function animConfetti() {
-  cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-  confettiPieces.forEach(p => {
-    p.x  += p.vx + Math.sin(p.rot) * p.swing;
-    p.y  += p.vy; p.vy += p.gravity;
-    p.rot += p.rotV; p.life -= p.decay;
-    cctx.save();
-    cctx.globalAlpha = Math.max(0, p.life);
-    cctx.fillStyle = p.color;
-    cctx.translate(p.x, p.y);
-    cctx.rotate(p.rot);
-    if (p.type === 'circle') {
-      cctx.beginPath(); cctx.arc(0, 0, p.r, 0, Math.PI*2); cctx.fill();
-    } else if (p.type === 'ribbon') {
-      const seg = p.h / 4;
-      cctx.beginPath();
-      cctx.moveTo(-p.w/2, -p.h/2);
-      cctx.bezierCurveTo( p.w/2, -p.h/2+seg,  -p.w/2, -p.h/2+seg*2,  p.w/2, -p.h/2+seg*3);
-      cctx.lineTo( p.w/2, -p.h/2+seg*4);
-      cctx.bezierCurveTo(-p.w/2, -p.h/2+seg*3,   p.w/2, -p.h/2+seg*2,  -p.w/2, -p.h/2+seg);
-      cctx.closePath(); cctx.fill();
-    } else {
-      cctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-      cctx.fillStyle = 'rgba(255,255,255,0.3)';
-      cctx.fillRect(-p.w/2, -p.h/2, p.w*0.4, p.h*0.4);
-    }
-    cctx.restore();
-  });
-  confettiPieces = confettiPieces.filter(p => p.life > 0 && p.y < confettiCanvas.height + 50);
-  if (confettiPieces.length > 0) {
-    confettiAnim = requestAnimationFrame(animConfetti);
-  } else {
-    cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
-    confettiCanvas.style.display = 'none';
-  }
-}
-
-/* ── INIT ──────────────────────────────────────────────── */
-renderGrid();
-updateCountdown();
-setInterval(updateCountdown, 1000);
-setInterval(renderGrid, 60000);
+function nextBoxLine(cur){const next=SCHEDULE.find(s=>s.date>cur);if(!next)return'';return`📦 Наступна коробка: <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;}
+const confettiCanvas=document.getElementById('confettiCanvas');const cctx=confettiCanvas.getContext('2d');let confettiPieces=[],confettiAnim=null;
+const CC=['#E8192C','#ff3348','#ff6b7a','#ff99a8','#f0a500','#ffc107','#ffe066','#fff3b0','#1a7a35','#34c768','#80e8a0','#ffffff','#e0d0ff','#b388ff','#7c4dff','#00bcd4','#40e0ff'];
+function launchConfetti(){confettiCanvas.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9999;display:block;';confettiCanvas.width=window.innerWidth;confettiCanvas.height=window.innerHeight;confettiPieces=[];const cx=confettiCanvas.width/2,cy=confettiCanvas.height+20;for(let i=0;i<300;i++){const a=-Math.PI/2+(Math.random()-.5)*Math.PI*1.4,sp=10+Math.random()*22,r=Math.random(),t=r<.4?'ribbon':r<.75?'rect':'circle';confettiPieces.push({x:cx+(Math.random()-.5)*120,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,color:CC[Math.floor(Math.random()*CC.length)],type:t,w:t==='ribbon'?4+Math.random()*4:7+Math.random()*10,h:t==='ribbon'?18+Math.random()*22:7+Math.random()*10,r:4+Math.random()*6,rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.5,life:1,decay:.005+Math.random()*.006,gravity:.22+Math.random()*.12,swing:(Math.random()-.5)*.25});}if(confettiAnim)cancelAnimationFrame(confettiAnim);animConfetti();}
+function animConfetti(){cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);confettiPieces.forEach(p=>{p.x+=p.vx+Math.sin(p.rot)*p.swing;p.y+=p.vy;p.vy+=p.gravity;p.rot+=p.rotV;p.life-=p.decay;cctx.save();cctx.globalAlpha=Math.max(0,p.life);cctx.fillStyle=p.color;cctx.translate(p.x,p.y);cctx.rotate(p.rot);if(p.type==='circle'){cctx.beginPath();cctx.arc(0,0,p.r,0,Math.PI*2);cctx.fill();}else if(p.type==='ribbon'){const s=p.h/4;cctx.beginPath();cctx.moveTo(-p.w/2,-p.h/2);cctx.bezierCurveTo(p.w/2,-p.h/2+s,-p.w/2,-p.h/2+s*2,p.w/2,-p.h/2+s*3);cctx.lineTo(p.w/2,-p.h/2+s*4);cctx.bezierCurveTo(-p.w/2,-p.h/2+s*3,p.w/2,-p.h/2+s*2,-p.w/2,-p.h/2+s);cctx.closePath();cctx.fill();}else{cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cctx.fillStyle='rgba(255,255,255,0.3)';cctx.fillRect(-p.w/2,-p.h/2,p.w*.4,p.h*.4);}cctx.restore();});confettiPieces=confettiPieces.filter(p=>p.life>0&&p.y<confettiCanvas.height+50);if(confettiPieces.length>0){confettiAnim=requestAnimationFrame(animConfetti);}else{cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);confettiCanvas.style.display='none';}}
+renderGrid();updateCountdown();setInterval(updateCountdown,1000);setInterval(renderGrid,60000);
 </script>
 </body>
 </html>
