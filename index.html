@@ -17,7 +17,6 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;font-size:var(--text-md);min-height:100vh;}
-/* KALEIDOSCOPE SUMMER BACKGROUND */
 /* HEADER */
 .header{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:3px solid var(--red);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:var(--sh-sm);}
 .header-logo img{height:40px;display:block;}
@@ -102,42 +101,27 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 .popup-promo-code:active{transform:scale(.98);}
 .popup-promo-hint{font-size:11px;color:var(--muted);text-align:center;}
 .popup-promo-copied{color:var(--green);font-weight:700;text-align:center;font-size:13px;min-height:16px;}
-.popup-promo-expired{display:none;color:#aaa;font-size:12px;text-align:center;}
-.code-gone .popup-promo-code,.code-gone .popup-promo-hint{opacity:.35;pointer-events:none;}
-.code-gone .popup-promo-expired{display:block;}
-.popup-timer{display:flex;align-items:center;justify-content:space-between;background:#f8f8fb;border-radius:10px;padding:10px 16px;}
-.popup-timer-label{font-size:12px;color:var(--muted);font-weight:600;}
-.popup-timer-val{font-size:18px;font-weight:900;color:var(--dark);font-variant-numeric:tabular-nums;}
-.popup-timer-val.dim{color:var(--red);}
 .popup-next{font-size:12px;color:var(--muted);text-align:center;line-height:1.5;}
 .popup-order{display:block;text-align:center;background:var(--red);color:#fff;font-weight:800;font-size:15px;letter-spacing:.5px;text-transform:uppercase;padding:16px;border-radius:var(--r-sm);text-decoration:none;transition:background .15s,transform .1s;box-shadow:0 4px 16px rgba(232,25,44,.3);}
 .popup-order:hover{background:var(--red-hover);transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,25,44,.4);}
 .popup-order:active{transform:scale(.98);}
 .popup-close{background:none;border:1.5px solid var(--border);border-radius:var(--r-sm);padding:10px;width:100%;font-family:inherit;font-size:14px;color:var(--muted);cursor:pointer;font-weight:600;transition:border-color .15s,color .15s;}
 .popup-close:hover{border-color:var(--dark);color:var(--dark);}
-/* special discount badge */
-.popup-discount-special{font-size:40px;font-weight:900;color:#fff;line-height:1.1;position:relative;z-index:1;animation:discIn .4s .35s cubic-bezier(.34,1.56,.64,1) both;}
 /* WEEKEND CARD */
 .box-card.weekend{background:#f4f4f8;border:1.5px solid #e4e4ee;box-shadow:none;opacity:.55;}
 .card-weekend-label{font-size:12px;color:#aaa;font-weight:600;letter-spacing:.3px;}
 /* IMPROVED OPENED CARD */
 .card-opened-promo{font-size:11px;font-weight:700;color:#4a9a6a;letter-spacing:1.5px;background:var(--green-soft);border-radius:6px;padding:2px 8px;display:inline-block;margin-top:3px;}
-
-/* ── SUMMER DECORATIONS ───────────────────────────────── */
-/* Sun in hero */
+/* SUN DECORATION */
 .sun-deco{position:absolute;top:-40px;right:-40px;width:180px;height:180px;pointer-events:none;z-index:0;opacity:.13;animation:sunSpin 40s linear infinite,sunPulse 6s ease-in-out infinite;}
 @keyframes sunSpin{to{transform:rotate(360deg);}}
 @keyframes sunPulse{0%,100%{opacity:.13;}50%{opacity:.18;}}
 .hero>*:not(.sun-deco){position:relative;z-index:1;}
-
-.grid-section{padding:8px 24px 64px;max-width:1140px;margin:0 auto;position:relative;}
 </style>
 </head>
 <body>
 
 <canvas id="confettiCanvas"></canvas>
-
-<!-- Kaleidoscope summer background blobs -->
 
 <header class="header">
   <div class="header-logo"><img src="logo.png" alt="Luxel"></div>
@@ -152,7 +136,6 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 </header>
 
 <section class="hero">
-  <!-- Decorative sun -->
   <svg class="sun-deco" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
     <circle cx="90" cy="90" r="44" fill="#f0a500"/>
     <g stroke="#f0a500" stroke-width="6" stroke-linecap="round">
@@ -210,7 +193,6 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
         <div class="popup-promo-code" id="popupPromo" onclick="copyPromo()">XXXX</div>
         <div class="popup-promo-hint">👆 Натисни, щоб скопіювати</div>
         <div class="popup-promo-copied" id="promoCopied"></div>
-        <div class="popup-promo-expired" id="promoExpired">⏱ Час для замовлення вийшов</div>
       </div>
       <div class="popup-next" id="popupNext"></div>
       <a class="popup-order" href="https://luxel.ua/optorder" target="_blank">🛒 Оформити замовлення</a>
@@ -220,44 +202,40 @@ body{background:#fafbfc;color:var(--dark);font-family:'Exo 2',Arial,sans-serif;f
 </div>
 
 <footer class="footer">
-  LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Знижки діють з 9:00 до 12:00 · Оформити замовлення можна впродовж 60 хвилин після відкриття
+  LUXEL Electrical Technology · <a href="https://luxel.ua">luxel.ua</a> · Знижки діють з 9:00 до 12:00
 </footer>
 
 <script>
 /* ── SCHEDULE ──────────────────────────────────────────── */
-// Box available: 09:00–11:00 each workday
-// After opening popup: 60-min personal countdown, then promo disappears
-
 const BOX_OPEN_HOUR  = 9;   // 09:00
 const BOX_CLOSE_HOUR = 12;  // 12:00
-const PROMO_MIN      = 60;  // minutes after popup open
 
 const SCHEDULE = [
   // ── ТИЖДЕНЬ 1 ──
-  {date:"2026-06-03",day:"Ср",group:"Лампи А60",       skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",           discount:15,   promo:"A60X"},
-  {date:"2026-06-04",day:"Чт",group:"Лампи А60",       skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",           discount:15,   promo:"A60X"},
-  {date:"2026-06-05",day:"Пт",group:"DLD",             skus:"Всі моделі",                                            discount:10,   promo:"DLD10"},
-  {date:"2026-06-06",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
-  {date:"2026-06-07",day:"Нд",group:"",                skus:"",                                                      discount:null, promo:null},
+  {date:"2026-06-03",day:"Ср",group:"Лампи А60",        skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",                    discount:15,   promo:"A60X"},
+  {date:"2026-06-04",day:"Чт",group:"Лампи А60",        skus:"060-NE · 063-NE · 064-NE · 065-NE · 066-NE",                    discount:15,   promo:"A60X"},
+  {date:"2026-06-05",day:"Пт",group:"DLD",              skus:"Всі моделі",                                                     discount:20,   promo:"DLD10"},
   // ── ТИЖДЕНЬ 2 ──
-  {date:"2026-06-10",day:"Ср",group:"OPERA чорний",    skus:"2101 · 2102 · 2104 · 2107 · 2108",                     discount:20,   promo:"OPBK"},
-  {date:"2026-06-11",day:"Чт",group:"Лампи G45",       skus:"053-NE · 056-NE · 057-NE · 058-NE",                    discount:20,   promo:"G45L"},
-  {date:"2026-06-12",day:"Пт",group:"SSWL",            skus:"Всі моделі",                                            discount:10,   promo:"SSWL1"},
-  {date:"2026-06-13",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  {date:"2026-06-08",day:"Пн",group:"JAZZ білий",       skus:"9001 · 9002 · 9003 · 9004 · 9007 · 9008",                       discount:15,   promo:"JAZZ"},
+  {date:"2026-06-09",day:"Вт",group:"Лампи C37 / C35",  skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                            discount:15,   promo:"C37K"},
+  {date:"2026-06-10",day:"Ср",group:"OPERA чорний",     skus:"2101 · 2102 · 2104 · 2107 · 2108",                              discount:20,   promo:"OPBK"},
+  {date:"2026-06-11",day:"Чт",group:"Лампи G45",        skus:"053-NE · 056-NE · 057-NE · 058-NE",                             discount:20,   promo:"G45L"},
+  {date:"2026-06-12",day:"Пт",group:"SSWL",             skus:"Всі моделі",                                                     discount:15,   promo:"SSWL1"},
   // ── ТИЖДЕНЬ 3 ──
-  {date:"2026-06-16",day:"Вт",group:"Датчик руху MS",  skus:"Всі моделі",                                            discount:5,    promo:"MS5DT"},
-  {date:"2026-06-17",day:"Ср",group:"BENEFICE",        skus:"Всі моделі",                                            discount:15,   promo:"BNF15"},
-  {date:"2026-06-18",day:"Чт",group:"DL-12N",          skus:"DL-12N",                                                discount:"1+1",promo:"DL121"},
-  {date:"2026-06-19",day:"Пт",group:"DLSG / DLRG",     skus:"Всі моделі",                                            discount:15,   promo:"DLG15"},
-  {date:"2026-06-20",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  {date:"2026-06-15",day:"Пн",group:"TL",               skus:"Всі моделі",                                                     discount:10,   promo:"TL10X"},
+  {date:"2026-06-16",day:"Вт",group:"Датчик руху MS",   skus:"Всі моделі",                                                     discount:5,    promo:"MS5DT"},
+  {date:"2026-06-17",day:"Ср",group:"BENEFICE",         skus:"Всі моделі",                                                     discount:15,   promo:"BNF15"},
+  {date:"2026-06-18",day:"Чт",group:"DL-12N",           skus:"DL-12N",                                                         discount:"1+1",promo:"DL121"},
+  {date:"2026-06-19",day:"Пт",group:"DLSG / DLRG",      skus:"Всі моделі",                                                     discount:15,   promo:"DLG15"},
   // ── ТИЖДЕНЬ 4 ──
-  {date:"2026-06-23",day:"Вт",group:"Лампи А60",       skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE", discount:20,   promo:"A6X2"},
-  {date:"2026-06-24",day:"Ср",group:"JAZZ кольорові",  skus:"Теракота · Бронза · Крем — вся палітра",               discount:20,   promo:"JZCL"},
-  {date:"2026-06-25",day:"Чт",group:"Лампи C37",       skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                   discount:20,   promo:"C37X"},
-  {date:"2026-06-26",day:"Пт",group:"Умови оплати",    skus:"Приймаємо б/г платежі по звичайному курсу та ФОП 0%",  discount:null, promo:null, info:true},
-  {date:"2026-06-27",day:"Сб",group:"",                skus:"",                                                      discount:null, promo:null},
+  {date:"2026-06-22",day:"Пн",group:"SFL-60",           skus:"SFL-60C (у гофрокартоні)",                                       discount:"3+1",promo:"SFL31"},
+  {date:"2026-06-23",day:"Вт",group:"Лампи А60",        skus:"060-NE · 063-NE · 064-NE · 065-NE · 060-CE · 064-CE",           discount:20,   promo:"A6X2"},
+  {date:"2026-06-24",day:"Ср",group:"JAZZ кольорові",   skus:"Теракота · Бронза · Крем — вся палітра",                         discount:20,   promo:"JZCL"},
+  {date:"2026-06-25",day:"Чт",group:"Лампи C37",        skus:"042 · 044 · 045 · 047 · 048 -NE/CE",                            discount:20,   promo:"C37X"},
+  {date:"2026-06-26",day:"Пт",group:"Умови оплати",     skus:"Приймаємо б/г платежі по звичайному курсу та ФОП 0%",           discount:null, promo:null, info:true},
   // ── ТИЖДЕНЬ 5 ──
-  {date:"2026-06-30",day:"Вт",group:"LPM",             skus:"Всі моделі",                                            discount:10,   promo:"LPM10"},
+  {date:"2026-06-29",day:"Пн",group:"LPM",              skus:"Всі моделі",                                                     discount:10,   promo:"LPM10"},
+  {date:"2026-06-30",day:"Вт",group:"DP",               skus:"Всі моделі",                                                     discount:20,   promo:"LPM10"},
 ];
 
 /* ── HELPERS ───────────────────────────────────────────── */
@@ -267,21 +245,20 @@ const dl  = d => d.slice(8)+'.'+d.slice(5,7);
 
 function nowHour() { return new Date().getHours() + new Date().getMinutes()/60; }
 
-// States: weekend | opened | available | expired | locked
 function isWeekend(dateStr) {
   const d = new Date(dateStr + 'T12:00:00');
-  return d.getDay() === 0 || d.getDay() === 6; // Sun=0, Sat=6
+  return d.getDay() === 0 || d.getDay() === 6;
 }
+
 function getState(item) {
   if (isWeekend(item.date)) return 'weekend';
   const t = todayStr();
   if (item.date < t) return 'opened';
   if (item.date > t) return 'locked';
-  // today — check time window 9:00–12:00
   const h = nowHour();
-  if (h < BOX_OPEN_HOUR)  return 'locked';   // before 9:00 — locked
-  if (h < BOX_CLOSE_HOUR) return 'available'; // 9:00–12:00
-  return 'expired'; // after 12:00 — акція завершена
+  if (h < BOX_OPEN_HOUR)  return 'locked';
+  if (h < BOX_CLOSE_HOUR) return 'available';
+  return 'expired';
 }
 
 /* ── SVGs ──────────────────────────────────────────────── */
@@ -321,18 +298,10 @@ function svgExpired(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.o
   <line x1="70" y1="30" x2="30" y2="70" stroke="#ccc" stroke-width="4" stroke-linecap="round"/>
 </svg>`; }
 
-function svgWeekend(){ return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="38" r="22" fill="#e8eaf2" stroke="#d0d4e8" stroke-width="2"/>
-  <path d="M36,38 Q50,22 64,38 Q50,54 36,38Z" fill="#c8ccd8" opacity=".6"/>
-  <circle cx="50" cy="38" r="8" fill="#b8bdd0"/>
-  <ellipse cx="50" cy="82" rx="28" ry="10" fill="#e0e4f0" stroke="#d0d4e8" stroke-width="1.5"/>
-  <rect x="44" y="52" width="12" height="24" rx="4" fill="#c8ccd8"/>
-</svg>`; }
-
 /* ── GRID ──────────────────────────────────────────────── */
 function discLabel(d) {
-  if (!d && d !== 0) return '';
-  if (typeof d === 'string') return d; // "1+1", "3+1"
+  if (d === null || d === undefined) return '';
+  if (typeof d === 'string') return d;
   return '-' + d + '%';
 }
 
@@ -341,21 +310,14 @@ function renderGrid() {
   grid.innerHTML = '';
   SCHEDULE.forEach((item, i) => {
     const state = getState(item);
-    if (state === 'weekend') return; // не показуємо вихідні
+    if (state === 'weekend') return;
     const card  = document.createElement('div');
-    // CSS class mapping
-    const cssMap = {weekend:'weekend', opened:'opened', available:'available', expired:'expired', locked:'future'};
+    const cssMap = {opened:'opened', available:'available', expired:'expired', locked:'future'};
     card.className = 'box-card ' + (cssMap[state] || 'future');
     const d = dl(item.date);
     let html = '';
 
-    if (state === 'weekend') {
-      html = `<div class="card-inner">
-        <div class="card-date">${d} ${item.day}</div>
-        <div class="card-graphic">${svgWeekend()}</div>
-        <div class="card-weekend-label">Вихідний 🌿</div>
-      </div>`;
-    } else if (state === 'available') {
+    if (state === 'available') {
       html = `<div class="card-shimmer"></div>
       <div class="card-inner">
         <div class="card-date">🔴 ${d} ${item.day} — СЬОГОДНІ</div>
@@ -364,12 +326,11 @@ function renderGrid() {
       </div>`;
     } else if (state === 'opened') {
       const disc = discLabel(item.discount);
-      const isInfo = item.info;
       html = `<div class="card-inner">
         <div class="card-date">✓ ${d} ${item.day}</div>
         <div class="card-graphic">${svgOpened()}</div>
         <div class="card-opened">
-          ${isInfo
+          ${item.info
             ? `<div class="card-opened-disc" style="font-size:20px">ℹ️</div><div class="card-opened-name">${item.group}</div>`
             : `<div class="card-opened-disc">${disc}</div>
                <div class="card-opened-name">${item.group}</div>
@@ -384,7 +345,6 @@ function renderGrid() {
         <div class="card-expired-label">Акція закінчилась</div>
       </div>`;
     } else {
-      // locked/future
       html = `<div class="card-inner">
         <div class="card-date">${d} ${item.day}</div>
         <div class="card-graphic">${svgLocked()}</div>
@@ -407,43 +367,9 @@ function copyPromo() {
   });
 }
 
-/* ── POPUP TIMER — countdown to 12:00 ─────────────────── */
-let ovTimer = null;
-
-function startPopupCountdown() {
-  clearInterval(ovTimer);
-  const today    = todayStr();
-  const deadline = new Date(today + 'T' + String(BOX_CLOSE_HOUR).padStart(2,'0') + ':00:00');
-
-  const tick = () => {
-    const diff = deadline - Date.now();
-    const el   = document.getElementById('popupCountdown');
-    if (!el) return;
-
-    if (diff <= 0) {
-      clearInterval(ovTimer);
-      el.textContent = '00:00';
-      el.classList.add('dim');
-      document.getElementById('promoBlock').classList.add('code-gone');
-      return;
-    }
-    const h = Math.floor(diff / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    el.textContent = h > 0 ? `${pad(h)}:${pad(m)}:${pad(s)}` : `${pad(m)}:${pad(s)}`;
-    el.classList.toggle('dim', diff < 10 * 60 * 1000);
-  };
-  tick();
-  ovTimer = setInterval(tick, 1000);
-}
-
 /* ── OPEN BOX ──────────────────────────────────────────── */
 function openBox(i) {
   const item = SCHEDULE[i];
-  const promoBlock = document.getElementById('promoBlock');
-  promoBlock.classList.remove('code-gone');
-
-  // Discount label
   const disc = discLabel(item.discount);
   const discEl = document.getElementById('popupDiscount');
   if (item.info) {
@@ -457,7 +383,7 @@ function openBox(i) {
   document.getElementById('popupProduct').textContent = item.group;
   document.getElementById('popupSkus').textContent    = item.skus || '';
 
-  // Promo block
+  const promoBlock = document.getElementById('promoBlock');
   if (item.promo) {
     promoBlock.style.display = '';
     document.getElementById('popupPromo').textContent  = item.promo;
@@ -466,7 +392,6 @@ function openBox(i) {
     promoBlock.style.display = 'none';
   }
 
-  // Next box
   const nextItem = SCHEDULE.find(s => s.date > item.date && !isWeekend(s.date) && !s.info);
   document.getElementById('popupNext').innerHTML = nextItem
     ? `📦 Наступна коробка: <strong>${dl(nextItem.date)} (${nextItem.day})</strong>`
@@ -478,7 +403,6 @@ function openBox(i) {
 
 function closeOverlay() {
   document.getElementById('overlay').classList.remove('active');
-  clearInterval(ovTimer);
 }
 document.getElementById('overlay').addEventListener('click', e => {
   if (e.target.id === 'overlay') closeOverlay();
@@ -493,6 +417,7 @@ function setCd(h, m, s) {
 
 function updateCountdown() {
   const today = todayStr(), now = new Date();
+  const h = nowHour(); // ← фікс: визначаємо h тут
   const todayItem = SCHEDULE.find(s => s.date === today);
   const titleEl   = document.getElementById('cdTitle');
 
@@ -541,17 +466,17 @@ function nextBoxLine(cur) {
   return `📦 Наступна коробка: <strong>${dl(next.date)} (${next.day}) о 9:00</strong>`;
 }
 
-/* ── CONFETTI ANIMATION ────────────────────────────────── */
+/* ── CONFETTI ──────────────────────────────────────────── */
 const confettiCanvas = document.getElementById('confettiCanvas');
 const cctx = confettiCanvas.getContext('2d');
 let confettiPieces = [], confettiAnim = null;
 
 const CONFETTI_COLORS = [
-  '#E8192C','#ff3348','#ff6b7a','#ff99a8',  // red
-  '#f0a500','#ffc107','#ffe066','#fff3b0',  // gold
-  '#1a7a35','#34c768','#80e8a0',            // green
-  '#ffffff','#e0d0ff','#b388ff','#7c4dff',  // white/purple
-  '#00bcd4','#40e0ff',                       // cyan
+  '#E8192C','#ff3348','#ff6b7a','#ff99a8',
+  '#f0a500','#ffc107','#ffe066','#fff3b0',
+  '#1a7a35','#34c768','#80e8a0',
+  '#ffffff','#e0d0ff','#b388ff','#7c4dff',
+  '#00bcd4','#40e0ff',
 ];
 
 function launchConfetti() {
@@ -559,36 +484,26 @@ function launchConfetti() {
   confettiCanvas.width  = window.innerWidth;
   confettiCanvas.height = window.innerHeight;
   confettiPieces = [];
-
-  // Launch from bottom-center in a fountain burst
   const cx = confettiCanvas.width / 2;
   const cy = confettiCanvas.height + 20;
-
   for (let i = 0; i < 300; i++) {
     const angle = -Math.PI/2 + (Math.random() - 0.5) * Math.PI * 1.4;
     const speed = 10 + Math.random() * 22;
-    // 40% ленточки, 35% прямокутники, 25% кружечки
     const r = Math.random();
     const type = r < 0.40 ? 'ribbon' : r < 0.75 ? 'rect' : 'circle';
     confettiPieces.push({
-      x: cx + (Math.random()-0.5)*120,
-      y: cy,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
+      x: cx + (Math.random()-0.5)*120, y: cy,
+      vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
       color: CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)],
       type,
       w: type==='ribbon' ? 4+Math.random()*4  : 7+Math.random()*10,
       h: type==='ribbon' ? 18+Math.random()*22 : 7+Math.random()*10,
       r: 4+Math.random()*6,
-      rot: Math.random()*Math.PI*2,
-      rotV: (Math.random()-0.5)*0.5,
-      life: 1,
-      decay: 0.005 + Math.random()*0.006,
-      gravity: 0.22 + Math.random()*0.12,
-      swing: (Math.random()-0.5)*0.25,
+      rot: Math.random()*Math.PI*2, rotV: (Math.random()-0.5)*0.5,
+      life: 1, decay: 0.005 + Math.random()*0.006,
+      gravity: 0.22 + Math.random()*0.12, swing: (Math.random()-0.5)*0.25,
     });
   }
-
   if (confettiAnim) cancelAnimationFrame(confettiAnim);
   animConfetti();
 }
@@ -597,40 +512,30 @@ function animConfetti() {
   cctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
   confettiPieces.forEach(p => {
     p.x  += p.vx + Math.sin(p.rot) * p.swing;
-    p.y  += p.vy;
-    p.vy += p.gravity;
-    p.rot += p.rotV;
-    p.life -= p.decay;
-
+    p.y  += p.vy; p.vy += p.gravity;
+    p.rot += p.rotV; p.life -= p.decay;
     cctx.save();
     cctx.globalAlpha = Math.max(0, p.life);
     cctx.fillStyle = p.color;
     cctx.translate(p.x, p.y);
     cctx.rotate(p.rot);
-
     if (p.type === 'circle') {
-      cctx.beginPath();
-      cctx.arc(0, 0, p.r, 0, Math.PI*2);
-      cctx.fill();
+      cctx.beginPath(); cctx.arc(0, 0, p.r, 0, Math.PI*2); cctx.fill();
     } else if (p.type === 'ribbon') {
-      // хвиляста ленточка
-      cctx.beginPath();
       const seg = p.h / 4;
+      cctx.beginPath();
       cctx.moveTo(-p.w/2, -p.h/2);
       cctx.bezierCurveTo( p.w/2, -p.h/2+seg,  -p.w/2, -p.h/2+seg*2,  p.w/2, -p.h/2+seg*3);
       cctx.lineTo( p.w/2, -p.h/2+seg*4);
       cctx.bezierCurveTo(-p.w/2, -p.h/2+seg*3,   p.w/2, -p.h/2+seg*2,  -p.w/2, -p.h/2+seg);
-      cctx.closePath();
-      cctx.fill();
+      cctx.closePath(); cctx.fill();
     } else {
-      // прямокутник з бликом
       cctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
       cctx.fillStyle = 'rgba(255,255,255,0.3)';
       cctx.fillRect(-p.w/2, -p.h/2, p.w*0.4, p.h*0.4);
     }
     cctx.restore();
   });
-
   confettiPieces = confettiPieces.filter(p => p.life > 0 && p.y < confettiCanvas.height + 50);
   if (confettiPieces.length > 0) {
     confettiAnim = requestAnimationFrame(animConfetti);
@@ -640,12 +545,10 @@ function animConfetti() {
   }
 }
 
-
 /* ── INIT ──────────────────────────────────────────────── */
 renderGrid();
 updateCountdown();
 setInterval(updateCountdown, 1000);
-// Re-render grid every minute (state may change at 9:00 or 11:00)
 setInterval(renderGrid, 60000);
 </script>
 </body>
